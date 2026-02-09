@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>WONDER POP V3 ULTIMATE - The Cocina Pop Adventure</title>
+    <title>WONDER POP V6 BOSS EDITION - ¡Derrotá a Ronald!</title>
     <style>
         * {
             margin: 0;
@@ -27,10 +27,10 @@
             position: relative;
             width: 100vw;
             height: 100vh;
-            max-width: 900px;
-            max-height: 650px;
+            max-width: 450px;
+            max-height: 800px;
             background: #000;
-            border: 10px solid #FFD700;
+            border: 8px solid #FFD700;
             box-shadow: 
                 0 0 40px rgba(255, 215, 0, 0.8),
                 inset 0 0 20px rgba(255, 215, 0, 0.3);
@@ -45,7 +45,6 @@
             image-rendering: crisp-edges;
         }
 
-        /* RETRO SCANLINES */
         #gameContainer::after {
             content: '';
             position: absolute;
@@ -55,8 +54,8 @@
             height: 100%;
             background: repeating-linear-gradient(
                 0deg,
-                rgba(0, 0, 0, 0.15),
-                rgba(0, 0, 0, 0.15) 1px,
+                rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.1) 1px,
                 transparent 1px,
                 transparent 2px
             );
@@ -64,7 +63,6 @@
             z-index: 10000;
         }
 
-        /* SPLASH SCREEN */
         #splashScreen {
             position: absolute;
             top: 0;
@@ -93,106 +91,115 @@
             pointer-events: none;
         }
 
-        .logoContainer {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
         .title {
-            font-size: 80px;
+            font-size: 48px;
             font-weight: 900;
             color: #FFF;
             text-shadow: 
-                6px 6px 0 #000,
+                4px 4px 0 #000,
                 -2px -2px 0 #FFD700,
-                8px 8px 0 #FF1493;
-            letter-spacing: 10px;
+                6px 6px 0 #FF1493;
+            letter-spacing: 6px;
             animation: megaPop 0.6s ease infinite alternate;
+            margin-bottom: 10px;
         }
 
         @keyframes megaPop {
             from { transform: scale(1) rotate(-1deg); }
-            to { transform: scale(1.08) rotate(1deg); }
+            to { transform: scale(1.05) rotate(1deg); }
         }
 
         .subtitle {
-            font-size: 20px;
+            font-size: 16px;
             color: #000;
             background: linear-gradient(90deg, #FFD700, #FFF, #FFD700);
-            padding: 12px 30px;
-            border-radius: 25px;
-            margin-bottom: 50px;
+            padding: 10px 25px;
+            border-radius: 20px;
+            margin-bottom: 10px;
             font-weight: 900;
-            letter-spacing: 3px;
-            box-shadow: 0 6px 0 #000;
-            animation: float 2s ease infinite;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 0 #000;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .newLabel {
+            font-size: 12px;
+            color: #FF1493;
+            background: #000;
+            padding: 6px 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #FF1493;
+            font-weight: 900;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .location {
+            font-size: 12px;
+            color: #FFF;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 6px 15px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid #FFD700;
         }
 
         .characters {
-            font-size: 100px;
-            margin-bottom: 50px;
+            font-size: 60px;
+            margin-bottom: 30px;
             animation: superBounce 1.2s ease infinite;
-            filter: drop-shadow(5px 5px 0 #000);
+            filter: drop-shadow(3px 3px 0 #000);
         }
 
         @keyframes superBounce {
             0%, 100% { transform: translateY(0) scale(1); }
-            25% { transform: translateY(-30px) scale(1.1); }
-            50% { transform: translateY(-40px) scale(1.15); }
-            75% { transform: translateY(-30px) scale(1.1); }
+            25% { transform: translateY(-20px) scale(1.05); }
+            50% { transform: translateY(-25px) scale(1.08); }
+            75% { transform: translateY(-20px) scale(1.05); }
         }
 
         .startBtn {
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 900;
             color: #000;
             background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
-            border: 6px solid #000;
-            padding: 25px 80px;
+            border: 5px solid #000;
+            padding: 18px 50px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            box-shadow: 10px 10px 0 #000;
+            letter-spacing: 4px;
+            box-shadow: 8px 8px 0 #000;
             transition: all 0.1s;
             animation: megaPulse 1.5s ease infinite;
-            position: relative;
-            overflow: hidden;
+            border-radius: 10px;
         }
 
         @keyframes megaPulse {
-            0%, 100% { box-shadow: 10px 10px 0 #000; transform: scale(1); }
-            50% { box-shadow: 15px 15px 0 #000; transform: scale(1.05); }
-        }
-
-        .startBtn:hover {
-            transform: translate(3px, 3px) scale(1.05);
-            box-shadow: 7px 7px 0 #000;
+            0%, 100% { box-shadow: 8px 8px 0 #000; }
+            50% { box-shadow: 12px 12px 0 #000; }
         }
 
         .startBtn:active {
-            transform: translate(6px, 6px);
+            transform: translate(4px, 4px);
             box-shadow: 4px 4px 0 #000;
         }
 
         .credits {
             position: absolute;
-            bottom: 30px;
-            font-size: 14px;
+            bottom: 20px;
+            font-size: 11px;
             color: #FFF;
             background: rgba(0, 0, 0, 0.9);
-            padding: 12px 24px;
-            border-radius: 15px;
+            padding: 8px 16px;
+            border-radius: 10px;
             font-weight: bold;
-            border: 3px solid #FFD700;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            border: 2px solid #FFD700;
         }
 
-        /* CHARACTER SELECTION */
         #characterScreen {
             position: absolute;
             top: 0;
@@ -205,6 +212,8 @@
             justify-content: center;
             align-items: center;
             z-index: 1999;
+            padding: 20px;
+            overflow-y: auto;
         }
 
         #characterScreen.show {
@@ -212,92 +221,86 @@
         }
 
         .charSelectTitle {
-            font-size: 50px;
+            font-size: 32px;
             font-weight: 900;
             color: #FFD700;
-            text-shadow: 4px 4px 0 #000;
-            margin-bottom: 50px;
-            letter-spacing: 4px;
+            text-shadow: 3px 3px 0 #000;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
         }
 
         .characterGrid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
         .characterCard {
-            width: 200px;
-            height: 250px;
+            width: 150px;
+            height: 200px;
             background: linear-gradient(135deg, #2a2a4e 0%, #1a1a3e 100%);
-            border: 5px solid #FFD700;
-            border-radius: 20px;
+            border: 4px solid #FFD700;
+            border-radius: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s;
-            position: relative;
-            overflow: hidden;
+            padding: 10px;
         }
 
-        .characterCard:hover {
-            transform: scale(1.1) translateY(-10px);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
-            border-color: #00FFFF;
+        .characterCard:active {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
         }
 
         .characterCard.selected {
             border-color: #32CD32;
-            border-width: 8px;
-            box-shadow: 0 0 30px rgba(50, 205, 50, 0.8);
+            border-width: 6px;
+            box-shadow: 0 0 20px rgba(50, 205, 50, 0.8);
         }
 
         .characterEmoji {
-            font-size: 100px;
-            margin-bottom: 15px;
-            animation: charIdle 2s ease infinite;
-        }
-
-        @keyframes charIdle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            font-size: 60px;
+            margin-bottom: 10px;
         }
 
         .characterName {
-            font-size: 20px;
+            font-size: 14px;
             font-weight: 900;
             color: #FFF;
             text-shadow: 2px 2px 0 #000;
             margin-bottom: 8px;
         }
 
-        .characterStats {
-            font-size: 11px;
+        .characterPower {
+            font-size: 10px;
             color: #FFD700;
             font-weight: bold;
+            text-align: center;
+            line-height: 1.3;
         }
 
         .playBtn {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 900;
             color: #000;
             background: #32CD32;
-            border: 5px solid #000;
-            padding: 20px 60px;
+            border: 4px solid #000;
+            padding: 15px 40px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            box-shadow: 8px 8px 0 #000;
+            letter-spacing: 3px;
+            box-shadow: 6px 6px 0 #000;
             transition: all 0.1s;
-            border-radius: 15px;
+            border-radius: 12px;
         }
 
-        .playBtn:hover {
-            transform: translate(2px, 2px);
-            box-shadow: 6px 6px 0 #000;
+        .playBtn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0 #000;
         }
 
         .playBtn.disabled {
@@ -306,7 +309,105 @@
             opacity: 0.5;
         }
 
-        /* GAME OVER SCREEN */
+        #shopScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1998;
+            padding: 20px;
+        }
+
+        #shopScreen.show {
+            display: flex;
+        }
+
+        .shopTitle {
+            font-size: 28px;
+            font-weight: 900;
+            color: #FFD700;
+            text-shadow: 3px 3px 0 #000;
+            margin-bottom: 10px;
+        }
+
+        .shopSubtitle {
+            font-size: 14px;
+            color: #00FFFF;
+            margin-bottom: 20px;
+        }
+
+        .shopItems {
+            background: rgba(26, 26, 62, 0.9);
+            border: 4px solid #FFD700;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .shopItem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .shopItem:active {
+            transform: scale(0.98);
+            background: rgba(50, 205, 50, 0.3);
+        }
+
+        .shopItemName {
+            font-size: 16px;
+            font-weight: bold;
+            color: #FFF;
+        }
+
+        .shopItemPrice {
+            font-size: 16px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .shopPoints {
+            font-size: 18px;
+            color: #00FFFF;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .shopBtn {
+            font-size: 20px;
+            font-weight: 900;
+            color: #FFF;
+            background: #FF1493;
+            border: 4px solid #000;
+            padding: 12px 40px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 5px 5px 0 #000;
+            border-radius: 10px;
+            transition: all 0.1s;
+        }
+
+        .shopBtn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0 #000;
+        }
+
         #gameOverScreen {
             position: absolute;
             top: 0;
@@ -318,7 +419,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 1998;
+            z-index: 1997;
         }
 
         #gameOverScreen.show {
@@ -326,209 +427,167 @@
         }
 
         .gameOverTitle {
-            font-size: 90px;
+            font-size: 60px;
             font-weight: 900;
             color: #FF1493;
-            text-shadow: 6px 6px 0 #000;
-            margin-bottom: 30px;
+            text-shadow: 5px 5px 0 #000;
+            margin-bottom: 20px;
             animation: shakeHard 0.5s ease;
         }
 
         @keyframes shakeHard {
-            0%, 100% { transform: translateX(0) rotate(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-15px) rotate(-2deg); }
-            20%, 40%, 60%, 80% { transform: translateX(15px) rotate(2deg); }
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
         }
 
         .finalScore {
-            font-size: 48px;
+            font-size: 32px;
             color: #00FFFF;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 900;
-            text-shadow: 3px 3px 0 #000;
+            text-shadow: 2px 2px 0 #000;
         }
 
         .highScore {
-            font-size: 28px;
+            font-size: 20px;
             color: #FFD700;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             font-weight: bold;
         }
 
         .retryBtn {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 900;
             color: #FFF;
             background: linear-gradient(180deg, #FF1493 0%, #C71585 100%);
-            border: 5px solid #000;
-            padding: 20px 60px;
+            border: 4px solid #000;
+            padding: 15px 40px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            box-shadow: 8px 8px 0 #000;
-            transition: all 0.1s;
-            border-radius: 15px;
-            margin: 10px;
-        }
-
-        .retryBtn:hover {
-            transform: translate(2px, 2px);
+            letter-spacing: 3px;
             box-shadow: 6px 6px 0 #000;
+            transition: all 0.1s;
+            border-radius: 12px;
+            margin: 8px;
         }
 
-        /* PAUSE SCREEN */
-        #pauseScreen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1997;
+        .retryBtn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0 #000;
         }
 
-        #pauseScreen.show {
-            display: flex;
-        }
-
-        .pauseTitle {
-            font-size: 70px;
-            font-weight: 900;
-            color: #FFD700;
-            text-shadow: 5px 5px 0 #000;
-            margin-bottom: 50px;
-        }
-
-        /* CONTROLS */
         #controls {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             display: flex;
-            gap: 15px;
+            gap: 10px;
             z-index: 1996;
         }
 
         .controlBtn {
-            font-size: 28px;
+            font-size: 22px;
             background: rgba(255, 215, 0, 0.95);
-            border: 4px solid #000;
-            padding: 12px 18px;
+            border: 3px solid #000;
+            padding: 8px 12px;
             cursor: pointer;
-            border-radius: 12px;
+            border-radius: 10px;
             font-weight: 900;
-            transition: all 0.1s;
-            box-shadow: 4px 4px 0 #000;
-        }
-
-        .controlBtn:hover {
-            transform: translate(1px, 1px);
             box-shadow: 3px 3px 0 #000;
         }
 
         .controlBtn:active {
             transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 #000;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .title { font-size: 50px; letter-spacing: 6px; }
-            .subtitle { font-size: 14px; padding: 10px 20px; }
-            .characters { font-size: 70px; }
-            .startBtn { font-size: 24px; padding: 20px 50px; }
-            .charSelectTitle { font-size: 36px; }
-            .characterGrid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .characterCard { width: 140px; height: 180px; }
-            .characterEmoji { font-size: 60px; }
-            .characterName { font-size: 16px; }
-            .playBtn { font-size: 20px; padding: 15px 40px; }
-            .gameOverTitle { font-size: 60px; }
-            .controlBtn { font-size: 20px; padding: 10px 14px; }
+            box-shadow: 1px 1px 0 #000;
         }
     </style>
 </head>
 <body>
     <div id="gameContainer">
-        <!-- SPLASH SCREEN -->
         <div id="splashScreen">
-            <div class="logoContainer">
-                <div class="title">WONDER POP</div>
-            </div>
-            <div class="subtitle">🎮 THE COCINA POP ADVENTURE 🎮</div>
+            <div class="title">WONDER POP</div>
+            <div class="subtitle">🎮 V6 BOSS EDITION 🎮</div>
+            <div class="newLabel">⚡ NUEVO: ¡DERROTÁ A RONALD! ⚡</div>
+            <div class="location">📍 Delivery desde San Justo 🇦🇷</div>
             <div class="characters">🥑🍅🥕🍆</div>
             <button class="startBtn" onclick="showCharacterSelect()">PRESS START</button>
-            <div class="credits">Created by COCINA POP STUDIOS 🎨 2026</div>
+            <div class="credits">© COCINA POP STUDIOS 2026</div>
         </div>
 
-        <!-- CHARACTER SELECTION -->
         <div id="characterScreen">
-            <div class="charSelectTitle">CHOOSE YOUR CHEF!</div>
+            <div class="charSelectTitle">¡ELEGÍ TU CHEF!</div>
             <div class="characterGrid">
                 <div class="characterCard" onclick="selectCharacter(0)">
                     <div class="characterEmoji">🍅</div>
-                    <div class="characterName">CHEF TOMATO</div>
-                    <div class="characterStats">Balanced • Classic</div>
+                    <div class="characterName">TOMATO</div>
+                    <div class="characterPower">🛡️ SALSA SHIELD<br>Escudo cada 15seg</div>
                 </div>
                 <div class="characterCard" onclick="selectCharacter(1)">
                     <div class="characterEmoji">🥑</div>
-                    <div class="characterName">CHEF AGUACATE</div>
-                    <div class="characterStats">Speed • Cocina Pop Star</div>
+                    <div class="characterName">AGUACATE</div>
+                    <div class="characterPower">💨 AVOCADO DASH<br>Velocidad x2 + Imán</div>
                 </div>
                 <div class="characterCard" onclick="selectCharacter(2)">
                     <div class="characterEmoji">🥕</div>
-                    <div class="characterName">CHEF ZANAHORIA</div>
-                    <div class="characterStats">Jump • High Flyer</div>
+                    <div class="characterName">ZANAHORIA</div>
+                    <div class="characterPower">🦘 DOUBLE JUMP<br>Salta 2 veces!</div>
                 </div>
                 <div class="characterCard" onclick="selectCharacter(3)">
                     <div class="characterEmoji">🍆</div>
-                    <div class="characterName">CHEF BERENJENA</div>
-                    <div class="characterStats">Defense • Tank</div>
+                    <div class="characterName">BERENJENA</div>
+                    <div class="characterPower">💥 GROUND POUND<br>Destruye obstáculos</div>
                 </div>
             </div>
             <button class="playBtn disabled" id="playBtn" onclick="startGameWithChar()">¡JUGAR!</button>
         </div>
 
-        <!-- CONTROLS -->
+        <div id="shopScreen">
+            <div class="shopTitle">🏪 COCINA POP</div>
+            <div class="shopSubtitle">San Justo - ¡Recargá y seguí!</div>
+            <div class="shopPoints">TUS PUNTOS: <span id="shopPointsValue">0</span></div>
+            <div class="shopItems">
+                <div class="shopItem" onclick="buyItem('life')">
+                    <div class="shopItemName">❤️ +1 VIDA</div>
+                    <div class="shopItemPrice">300 pts</div>
+                </div>
+                <div class="shopItem" onclick="buyItem('shield')">
+                    <div class="shopItemName">🛡️ ESCUDO</div>
+                    <div class="shopItemPrice">400 pts</div>
+                </div>
+                <div class="shopItem" onclick="buyItem('magnet')">
+                    <div class="shopItemName">🧲 IMÁN</div>
+                    <div class="shopItemPrice">350 pts</div>
+                </div>
+                <div class="shopItem" onclick="buyItem('slow')">
+                    <div class="shopItemName">⏰ SLOW-MO</div>
+                    <div class="shopItemPrice">300 pts</div>
+                </div>
+            </div>
+            <button class="shopBtn" onclick="closeShop()">VOLVER AL JUEGO</button>
+        </div>
+
         <div id="controls" style="display:none;">
-            <button class="controlBtn" onclick="togglePause()">⏸️</button>
             <button class="controlBtn" onclick="toggleAudio()">🔊</button>
         </div>
 
-        <!-- PAUSE SCREEN -->
-        <div id="pauseScreen">
-            <div class="pauseTitle">PAUSED</div>
-            <button class="retryBtn" onclick="togglePause()">RESUME</button>
-            <button class="retryBtn" onclick="location.reload()">MENU</button>
-        </div>
-
-        <!-- GAME OVER SCREEN -->
         <div id="gameOverScreen">
             <div class="gameOverTitle">GAME OVER!</div>
             <div class="finalScore">SCORE: <span id="finalScoreValue">0</span></div>
             <div class="highScore">HIGH SCORE: <span id="highScoreValue">0</span></div>
-            <button class="retryBtn" onclick="retry()">RETRY</button>
-            <button class="retryBtn" onclick="location.reload()">CHANGE CHEF</button>
+            <button class="retryBtn" onclick="retry()">REINTENTAR</button>
+            <button class="retryBtn" onclick="location.reload()">CAMBIAR CHEF</button>
         </div>
 
-        <!-- GAME CANVAS -->
         <canvas id="gameCanvas"></canvas>
     </div>
 
     <script>
-        // ═══════════════════════════════════════════════════════════════════
-        // SETUP
-        // ═══════════════════════════════════════════════════════════════════
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = 900;
-        canvas.height = 650;
+        canvas.width = 450;
+        canvas.height = 800;
 
-        // Color palette (Wonder Boy inspired)
         const colors = {
             black: '#000000',
             white: '#FFFFFF',
@@ -541,26 +600,70 @@
             blue: '#4444FF',
             pink: '#FF1493',
             purple: '#8B00FF',
-            brown: '#8B4513'
+            brown: '#8B4513',
+            sky1: '#87CEEB',
+            sky2: '#4A90E2',
+            building: '#8B7355'
         };
 
-        // Characters data
+        // ✅ PERSONAJES CON PODERES
         const characters = [
-            { name: 'TOMATO', emoji: '🍅', color: colors.red, speed: 1.0, jump: 1.0, defense: 1.0 },
-            { name: 'AGUACATE', emoji: '🥑', color: colors.green, speed: 1.3, jump: 0.9, defense: 0.8 },
-            { name: 'ZANAHORIA', emoji: '🥕', color: colors.orange, speed: 0.9, jump: 1.4, defense: 0.9 },
-            { name: 'BERENJENA', emoji: '🍆', color: colors.purple, speed: 0.8, jump: 0.8, defense: 1.5 }
+            { 
+                name: 'TOMATO', 
+                emoji: '🍅', 
+                color: colors.red, 
+                speed: 1.0, 
+                jump: 1.25, // ✅ +25% salto
+                defense: 1.0,
+                powerType: 'shield',
+                powerCooldown: 900, // 15 segundos
+                powerDuration: 180   // 3 segundos
+            },
+            { 
+                name: 'AGUACATE', 
+                emoji: '🥑', 
+                color: colors.green, 
+                speed: 1.3, 
+                jump: 1.15, // ✅ +15% salto
+                defense: 0.8,
+                powerType: 'dash',
+                powerCooldown: 720, // 12 segundos
+                powerDuration: 180
+            },
+            { 
+                name: 'ZANAHORIA', 
+                emoji: '🥕', 
+                color: colors.orange, 
+                speed: 0.9, 
+                jump: 1.5, // ✅ +50% salto (mega alto)
+                defense: 0.9,
+                powerType: 'doubleJump',
+                powerCooldown: 0, // Siempre disponible
+                powerDuration: 0
+            },
+            { 
+                name: 'BERENJENA', 
+                emoji: '🍆', 
+                color: colors.purple, 
+                speed: 0.8, 
+                jump: 1.2, // ✅ +20% salto
+                defense: 1.5,
+                powerType: 'groundPound',
+                powerCooldown: 0, // Siempre disponible
+                powerDuration: 0
+            }
         ];
 
         let selectedCharIndex = -1;
         let selectedChar = null;
 
         // ═══════════════════════════════════════════════════════════════════
-        // AUDIO SYSTEM (Chiptune Music)
+        // AUDIO
         // ═══════════════════════════════════════════════════════════════════
         let audioEnabled = true;
         let audioContext = null;
         let bgmPlaying = false;
+        let bossMusicPlaying = false;
 
         function initAudio() {
             if (!audioContext) {
@@ -568,8 +671,7 @@
             }
         }
 
-        // Chiptune melody generator
-        function playNote(freq, duration, type = 'square') {
+        function playNote(freq, duration, type = 'square', volume = 0.25) {
             if (!audioEnabled || !audioContext) return;
             
             const osc = audioContext.createOscillator();
@@ -578,7 +680,7 @@
             osc.type = type;
             osc.frequency.value = freq;
             
-            gain.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gain.gain.setValueAtTime(volume, audioContext.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
             
             osc.connect(gain);
@@ -588,58 +690,131 @@
             osc.stop(audioContext.currentTime + duration);
         }
 
-        // Background music loop (Cocina Pop theme)
         function playBGM() {
-            if (!audioEnabled || bgmPlaying) return;
+            if (!audioEnabled || bgmPlaying || bossMusicPlaying) return;
             bgmPlaying = true;
             
             const melody = [
-                {note: 523.25, duration: 0.2}, // C5
-                {note: 659.25, duration: 0.2}, // E5
-                {note: 783.99, duration: 0.2}, // G5
-                {note: 880.00, duration: 0.3}, // A5
-                {note: 783.99, duration: 0.2}, // G5
-                {note: 659.25, duration: 0.2}, // E5
-                {note: 523.25, duration: 0.4}, // C5
-                {note: 587.33, duration: 0.2}, // D5
-                {note: 659.25, duration: 0.2}, // E5
-                {note: 698.46, duration: 0.2}, // F5
-                {note: 783.99, duration: 0.4}, // G5
+                {note: 523.25, duration: 0.15},
+                {note: 659.25, duration: 0.15},
+                {note: 783.99, duration: 0.15},
+                {note: 880.00, duration: 0.25},
+                {note: 783.99, duration: 0.15},
+                {note: 659.25, duration: 0.15},
+                {note: 698.46, duration: 0.2},
+                {note: 783.99, duration: 0.3},
             ];
             
             let time = 0;
             melody.forEach(({note, duration}) => {
-                setTimeout(() => playNote(note, duration, 'square'), time * 1000);
+                setTimeout(() => {
+                    playNote(note, duration, 'square', 0.15);
+                    playNote(note/2, duration, 'triangle', 0.08);
+                }, time * 1000);
                 time += duration;
             });
             
             setTimeout(() => {
                 bgmPlaying = false;
-                if (gameStarted && !paused) playBGM();
-            }, (time + 0.5) * 1000);
+                if (gameStarted && !paused && !boss) playBGM();
+            }, (time + 0.3) * 1000);
+        }
+
+        // ✅ BOSS MUSIC
+        function playBossMusic() {
+            if (!audioEnabled || bossMusicPlaying) return;
+            bossMusicPlaying = true;
+            bgmPlaying = false;
+            
+            const bossMelody = [
+                {note: 329.63, duration: 0.12}, // E
+                {note: 329.63, duration: 0.12},
+                {note: 349.23, duration: 0.12}, // F
+                {note: 329.63, duration: 0.12},
+                {note: 293.66, duration: 0.24}, // D
+                {note: 261.63, duration: 0.24}, // C
+            ];
+            
+            let time = 0;
+            bossMelody.forEach(({note, duration}) => {
+                setTimeout(() => {
+                    playNote(note, duration, 'sawtooth', 0.2);
+                    playNote(note/2, duration, 'square', 0.12);
+                }, time * 1000);
+                time += duration;
+            });
+            
+            setTimeout(() => {
+                bossMusicPlaying = false;
+                if (gameStarted && !paused && boss) playBossMusic();
+            }, (time + 0.2) * 1000);
         }
 
         const sounds = {
-            jump: () => playNote(440, 0.1, 'sine'),
-            collect: () => playNote(880, 0.15, 'square'),
-            hit: () => { playNote(110, 0.3, 'sawtooth'); playNote(100, 0.3, 'sawtooth'); },
-            powerup: () => {
-                playNote(523.25, 0.1);
-                playNote(659.25, 0.1);
-                playNote(783.99, 0.2);
+            jump: () => { 
+                playNote(500, 0.08, 'sine', 0.3); 
+                setTimeout(() => playNote(650, 0.08, 'sine', 0.25), 40);
+                playNote(200, 0.06, 'sawtooth', 0.15);
             },
-            gameOver: () => {
-                playNote(440, 0.2, 'sawtooth');
-                playNote(392, 0.2, 'sawtooth');
-                playNote(349.23, 0.4, 'sawtooth');
+            doubleJump: () => {
+                playNote(700, 0.08, 'sine', 0.3); 
+                setTimeout(() => playNote(900, 0.08, 'sine', 0.25), 40);
+            },
+            collect: () => { 
+                playNote(900, 0.1, 'square', 0.3); 
+                setTimeout(() => playNote(1200, 0.12, 'square', 0.3), 50);
+                setTimeout(() => playNote(1500, 0.08, 'sine', 0.2), 100);
+            },
+            hit: () => { 
+                playNote(120, 0.3, 'sawtooth', 0.4); 
+                playNote(100, 0.35, 'sawtooth', 0.3);
+                setTimeout(() => playNote(80, 0.2, 'sawtooth', 0.25), 100);
+            },
+            powerup: () => {
+                const notes = [523.25, 659.25, 783.99, 1046.5];
+                notes.forEach((note, i) => {
+                    setTimeout(() => playNote(note, 0.12, 'sine', 0.25), i * 60);
+                });
+            },
+            powerReady: () => {
+                playNote(880, 0.08, 'sine', 0.2);
+                setTimeout(() => playNote(1100, 0.08, 'sine', 0.2), 50);
+            },
+            dash: () => {
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => playNote(800 + i * 200, 0.04, 'square', 0.15), i * 30);
+                }
+            },
+            groundPound: () => {
+                playNote(150, 0.2, 'sawtooth', 0.35);
+                setTimeout(() => playNote(100, 0.3, 'sawtooth', 0.35), 100);
+            },
+            shield: () => {
+                playNote(600, 0.15, 'sine', 0.25);
+                setTimeout(() => playNote(800, 0.15, 'sine', 0.25), 100);
+            },
+            bossHit: () => {
+                playNote(200, 0.15, 'sawtooth', 0.4);
+                setTimeout(() => playNote(150, 0.2, 'sawtooth', 0.35), 80);
+            },
+            bossDefeat: () => {
+                for (let i = 0; i < 8; i++) {
+                    setTimeout(() => playNote(1200 - i * 150, 0.1, 'square', 0.25), i * 100);
+                }
+            },
+            shop: () => {
+                playNote(600, 0.1, 'sine', 0.2);
+                setTimeout(() => playNote(800, 0.1, 'sine', 0.2), 80);
+                setTimeout(() => playNote(1000, 0.15, 'sine', 0.25), 160);
             }
         };
 
         function toggleAudio() {
             audioEnabled = !audioEnabled;
-            document.querySelector('#controls .controlBtn:last-child').textContent = audioEnabled ? '🔊' : '🔇';
+            document.querySelector('#controls .controlBtn').textContent = audioEnabled ? '🔊' : '🔇';
             if (audioEnabled && gameStarted && !paused) {
-                playBGM();
+                if (boss) playBossMusic();
+                else playBGM();
             }
         }
 
@@ -652,41 +827,64 @@
         let score = 0;
         let highScore = localStorage.getItem('wonderPopHighScore') || 0;
         let frame = 0;
-        let gameSpeed = 1.2; // SLOWER START
+        let gameSpeed = 1.2;
         let combo = 0;
         let comboTimer = 0;
 
-        // Player
-        const groundY = 480;
+        let screenShake = 0;
+        let cameraOffsetX = 0;
+        let cameraOffsetY = 0;
+
+        const groundY = 600;
         let player = {
-            x: 100,
+            x: 80,
             y: groundY,
-            width: 50,
-            height: 65,
+            width: 55,
+            height: 70,
             vy: 0,
             jumping: false,
+            canDoubleJump: false, // ✅ Para zanahoria
+            hasDoubleJumped: false,
             runFrame: 0,
             invincible: 0,
             lives: 3,
-            maxLives: 3
+            maxLives: 3,
+            chefMode: 0,
+            trail: [],
+            // ✅ POWER SYSTEM
+            powerCharge: 0,
+            powerActive: false,
+            powerTimer: 0,
+            dashActive: false,
+            shieldActive: false,
+            isPounding: false
         };
 
-        // Game objects
         let obstacles = [];
         let collectibles = [];
-        let powerups = [];
+        let specialChars = [];
         let particles = [];
         let floatingTexts = [];
+        let shopIcon = null;
+
+        let buildings = [];
         let clouds = [];
         let stars = [];
+        let birds = [];
 
-        // Tutorial
         let showTutorial = true;
         let tutorialAlpha = 1;
+        let nextShopScore = 1000;
+        
+        let lastSpecialSpawn = 0;
+        let specialSpawnCooldown = 900;
 
-        // ═══════════════════════════════════════════════════════════════════
-        // UI FUNCTIONS
-        // ═══════════════════════════════════════════════════════════════════
+        // ✅ BOSS SYSTEM
+        let boss = null;
+        let bossSpawned = false;
+        let bossDefeated = false;
+        let bossProjectiles = [];
+
         function showCharacterSelect() {
             document.getElementById('splashScreen').classList.add('hidden');
             setTimeout(() => {
@@ -698,7 +896,6 @@
             selectedCharIndex = index;
             selectedChar = characters[index];
             
-            // Update UI
             document.querySelectorAll('.characterCard').forEach((card, i) => {
                 card.classList.toggle('selected', i === index);
             });
@@ -714,9 +911,13 @@
             document.getElementById('characterScreen').classList.remove('show');
             document.getElementById('controls').style.display = 'flex';
             
-            // Apply character stats
             player.lives = Math.floor(3 * selectedChar.defense);
             player.maxLives = player.lives;
+            
+            // ✅ Zanahoria empieza con double jump enabled
+            if (selectedChar.powerType === 'doubleJump') {
+                player.canDoubleJump = true;
+            }
             
             gameStarted = true;
             playBGM();
@@ -724,12 +925,58 @@
             gameLoop();
         }
 
-        function togglePause() {
-            paused = !paused;
-            document.getElementById('pauseScreen').classList.toggle('show');
-            if (!paused && gameStarted) {
-                playBGM();
+        function openShop() {
+            paused = true;
+            document.getElementById('shopPointsValue').textContent = score;
+            document.getElementById('shopScreen').classList.add('show');
+            sounds.shop();
+        }
+
+        function closeShop() {
+            paused = false;
+            document.getElementById('shopScreen').classList.remove('show');
+            if (gameStarted && !gameOver) {
+                if (boss) playBossMusic();
+                else playBGM();
                 gameLoop();
+            }
+        }
+
+        function buyItem(type) {
+            const prices = { life: 300, shield: 400, magnet: 350, slow: 300 };
+            const price = prices[type];
+            
+            if (score < price) {
+                createFloatingText(canvas.width/2 - 80, 400, '¡SIN PUNTOS!', colors.red);
+                sounds.hit();
+                return;
+            }
+            
+            score -= price;
+            document.getElementById('shopPointsValue').textContent = score;
+            sounds.powerup();
+            
+            if (type === 'life') {
+                player.lives = Math.min(player.lives + 1, player.maxLives);
+                createFloatingText(canvas.width/2 - 60, 400, '+1 VIDA!', colors.lime);
+                createExplosion(canvas.width/2, 400, colors.lime, 20);
+            } else if (type === 'shield') {
+                player.invincible = 300;
+                createFloatingText(canvas.width/2 - 70, 400, 'ESCUDO!', colors.cyan);
+                createExplosion(canvas.width/2, 400, colors.cyan, 20);
+            } else if (type === 'magnet') {
+                collectibles.forEach(col => {
+                    if (Math.abs(col.x - player.x) < 400) {
+                        score += col.points;
+                        createExplosion(col.x, col.y, colors.lime, 15);
+                    }
+                });
+                collectibles = [];
+                createFloatingText(canvas.width/2 - 60, 400, 'IMÁN!', colors.yellow);
+            } else if (type === 'slow') {
+                gameSpeed *= 0.5;
+                setTimeout(() => { gameSpeed *= 2; }, 3000);
+                createFloatingText(canvas.width/2 - 80, 400, 'SLOW-MO!', colors.purple);
             }
         }
 
@@ -737,310 +984,796 @@
             location.reload();
         }
 
-        // ═══════════════════════════════════════════════════════════════════
-        // GAME INITIALIZATION
-        // ═══════════════════════════════════════════════════════════════════
         function initGame() {
-            // Create background elements
-            for (let i = 0; i < 15; i++) {
-                clouds.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * 300,
-                    speed: 0.3 + Math.random() * 0.5,
-                    size: 40 + Math.random() * 40
+            for (let i = 0; i < 8; i++) {
+                buildings.push({
+                    x: i * 120,
+                    y: 200 + Math.random() * 100,
+                    width: 80 + Math.random() * 40,
+                    height: 150 + Math.random() * 100,
+                    speed: 0.2,
+                    color: Math.random() > 0.5 ? colors.building : '#A0826D'
                 });
             }
             
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 12; i++) {
+                clouds.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * 250,
+                    speed: 0.3 + Math.random() * 0.2,
+                    size: 30 + Math.random() * 30
+                });
+            }
+            
+            for (let i = 0; i < 40; i++) {
                 stars.push({
                     x: Math.random() * canvas.width,
-                    y: Math.random() * groundY,
+                    y: Math.random() * 300,
                     size: 1 + Math.random() * 2,
                     twinkle: Math.random() * 60
                 });
             }
+
+            for (let i = 0; i < 5; i++) {
+                birds.push({
+                    x: Math.random() * canvas.width,
+                    y: 100 + Math.random() * 150,
+                    speed: 0.5 + Math.random() * 0.3,
+                    wingFrame: Math.random() * 10
+                });
+            }
         }
 
-        // ═══════════════════════════════════════════════════════════════════
-        // INPUT
-        // ═══════════════════════════════════════════════════════════════════
         canvas.addEventListener('touchstart', jump);
         canvas.addEventListener('mousedown', jump);
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space' || e.code === 'ArrowUp') jump();
-            if (e.code === 'Escape') togglePause();
+            if (e.code === 'ArrowDown' && selectedChar.powerType === 'groundPound' && player.jumping) {
+                activateGroundPound();
+            }
         });
 
         function jump() {
             if (!gameStarted || paused || gameOver) return;
             
+            // ✅ DOBLE SALTO PARA ZANAHORIA
+            if (player.canDoubleJump && player.jumping && !player.hasDoubleJumped) {
+                player.vy = -16 * selectedChar.jump;
+                player.hasDoubleJumped = true;
+                sounds.doubleJump();
+                createParticles(player.x + player.width/2, player.y + player.height, colors.orange, 12);
+                
+                // Zanahoria trail effect
+                for (let i = 0; i < 3; i++) {
+                    particles.push({
+                        x: player.x + player.width/2,
+                        y: player.y + player.height,
+                        vx: (Math.random() - 0.5) * 4,
+                        vy: Math.random() * 2,
+                        size: 6,
+                        color: colors.orange,
+                        life: 25,
+                        emoji: '🥕'
+                    });
+                }
+                return;
+            }
+            
+            // Normal jump
             if (!player.jumping) {
-                player.vy = -18 * selectedChar.jump; // Character-specific jump
+                player.vy = -16 * selectedChar.jump; // ✅ Salto más alto base
                 player.jumping = true;
+                player.hasDoubleJumped = false;
                 sounds.jump();
+                createParticles(player.x + player.width/2, player.y + player.height, colors.yellow, 8);
             }
         }
 
-        // ═══════════════════════════════════════════════════════════════════
-        // SPAWN SYSTEM
-        // ═══════════════════════════════════════════════════════════════════
+        // ✅ GROUND POUND para Berenjena
+        function activateGroundPound() {
+            if (selectedChar.powerType !== 'groundPound' || player.isPounding) return;
+            
+            player.isPounding = true;
+            player.vy = 25; // Caer rápido
+            sounds.groundPound();
+            
+            // Visual effect
+            for (let i = 0; i < 8; i++) {
+                particles.push({
+                    x: player.x + player.width/2,
+                    y: player.y + player.height,
+                    vx: (Math.random() - 0.5) * 8,
+                    vy: -Math.random() * 5,
+                    size: 8,
+                    color: colors.purple,
+                    life: 30
+                });
+            }
+        }
+
         function spawnObstacle() {
-            // GRACE PERIOD (first 7 seconds)
-            if (frame < 420) return;
+            if (frame < 420 || boss) return;
             
             obstacles.push({
                 x: canvas.width + 50,
-                y: groundY + player.height - 45,
-                width: 40,
-                height: 45,
-                pulseFrame: 0,
-                type: Math.random() > 0.7 ? 'spike' : 'box'
+                y: groundY + player.height - 50,
+                width: 45,
+                height: 50,
+                pulseFrame: 0
             });
         }
 
         function spawnCollectible() {
-            // GRACE PERIOD
-            if (frame < 300) return;
+            if (frame < 300 || boss) return;
             
-            const emojis = ['🍕', '🍔', '🌮', '🍜', '🍰', '🍩'];
-            const yPos = 200 + Math.random() * 200;
+            const emojis = ['🍕', '🍔', '🌮', '🍜', '🍰', '🍩', '🥗', '🧈'];
             
             collectibles.push({
                 x: canvas.width + 50,
-                y: yPos,
-                width: 40,
-                height: 40,
+                y: 250 + Math.random() * 250,
+                width: 45,
+                height: 45,
                 emoji: emojis[Math.floor(Math.random() * emojis.length)],
                 floatOffset: Math.random() * Math.PI * 2,
                 points: 100
             });
         }
 
-        function spawnPowerup() {
-            if (frame < 600 || Math.random() > 0.005) return;
-            
-            const types = ['shield', 'magnet', 'slow'];
-            const type = types[Math.floor(Math.random() * types.length)];
-            
-            powerups.push({
-                x: canvas.width + 50,
-                y: 300 + Math.random() * 150,
-                width: 45,
-                height: 45,
-                type: type,
-                icon: type === 'shield' ? '🛡️' : type === 'magnet' ? '🧲' : '⏰',
-                floatOffset: Math.random() * Math.PI * 2
-            });
+        function spawnShop() {
+            if (score >= nextShopScore && !shopIcon && !boss) {
+                shopIcon = {
+                    x: canvas.width + 50,
+                    y: 300,
+                    width: 60,
+                    height: 60,
+                    floatOffset: 0
+                };
+                nextShopScore += 1000;
+            }
         }
 
-        // ═══════════════════════════════════════════════════════════════════
-        // UPDATE
-        // ═══════════════════════════════════════════════════════════════════
+        function spawnSpecialChar() {
+            if (frame < 1200 || boss) return;
+            if (specialChars.length > 0) return;
+            if (frame - lastSpecialSpawn < specialSpawnCooldown) return;
+            
+            if (Math.random() > 0.005) return;
+            
+            lastSpecialSpawn = frame;
+            specialSpawnCooldown = 900 + Math.random() * 600;
+            
+            const types = ['chef', 'ivancito', 'luisito'];
+            const weights = [0.3, 0.4, 0.3];
+            const rand = Math.random();
+            let type;
+            
+            if (rand < weights[0]) type = 'chef';
+            else if (rand < weights[0] + weights[1]) type = 'ivancito';
+            else type = 'luisito';
+            
+            if (type === 'chef') {
+                specialChars.push({
+                    type: 'chef',
+                    x: canvas.width + 50,
+                    y: 250,
+                    width: 60,
+                    height: 80,
+                    floatOffset: 0
+                });
+            } else if (type === 'ivancito') {
+                specialChars.push({
+                    type: 'ivancito',
+                    x: canvas.width + 50,
+                    y: groundY,
+                    width: 50,
+                    height: 65,
+                    runFrame: 0,
+                    photosTaken: 0,
+                    photoTimer: 0,
+                    lifeTime: 0
+                });
+            } else {
+                specialChars.push({
+                    type: 'luisito',
+                    x: canvas.width + 50,
+                    y: 350,
+                    width: 55,
+                    height: 70,
+                    floatOffset: 0,
+                    activated: false
+                });
+            }
+        }
+
+        // ✅ SPAWN BOSS
+        function spawnBoss() {
+            if (bossSpawned || score < 3000) return;
+            
+            bossSpawned = true;
+            
+            // Clear all obstacles
+            obstacles = [];
+            collectibles = [];
+            specialChars = [];
+            shopIcon = null;
+            
+            boss = {
+                x: canvas.width + 100,
+                y: groundY - 20,
+                width: 90,
+                height: 110,
+                hp: 10,
+                maxHp: 10,
+                phase: 1,
+                attackTimer: 0,
+                moveDir: -1,
+                speed: 2,
+                invincible: 0,
+                defeated: false
+            };
+            
+            // Stop normal BGM, start boss music
+            bgmPlaying = false;
+            playBossMusic();
+            
+            screenShake = 25;
+            createFloatingText(canvas.width/2 - 120, 200, '¡BOSS BATTLE!', colors.red);
+            createFloatingText(canvas.width/2 - 100, 240, 'RONALD MCDONALD', colors.yellow);
+        }
+
         function update() {
             if (gameOver || paused) return;
             
             frame++;
             
-            // Player physics
-            player.vy += 0.8; // gravity
+            // ✅ Spawn boss
+            spawnBoss();
+            
+            if (screenShake > 0) {
+                screenShake *= 0.9;
+                cameraOffsetX = (Math.random() - 0.5) * screenShake;
+                cameraOffsetY = (Math.random() - 0.5) * screenShake;
+            } else {
+                cameraOffsetX = 0;
+                cameraOffsetY = 0;
+            }
+            
+            // ✅ POWER CHARGING (except doubleJump and groundPound)
+            if (selectedChar.powerCooldown > 0 && !player.powerActive) {
+                player.powerCharge++;
+                if (player.powerCharge >= selectedChar.powerCooldown) {
+                    // Power ready!
+                    if (player.powerCharge === selectedChar.powerCooldown) {
+                        sounds.powerReady();
+                        createFloatingText(player.x - 20, player.y - 40, 'POWER READY!', colors.yellow);
+                    }
+                    
+                    // Auto-activate for shield and dash
+                    if (selectedChar.powerType === 'shield') {
+                        activateShield();
+                    } else if (selectedChar.powerType === 'dash') {
+                        activateDash();
+                    }
+                }
+            }
+            
+            // ✅ POWER TIMER
+            if (player.powerActive) {
+                player.powerTimer--;
+                if (player.powerTimer <= 0) {
+                    player.powerActive = false;
+                    player.powerCharge = 0;
+                    player.shieldActive = false;
+                    player.dashActive = false;
+                }
+            }
+            
+            player.vy += 0.7;
             player.y += player.vy;
             
             if (player.y >= groundY) {
                 player.y = groundY;
                 player.vy = 0;
                 player.jumping = false;
+                player.hasDoubleJumped = false;
+                
+                // ✅ Ground pound impact
+                if (player.isPounding) {
+                    player.isPounding = false;
+                    screenShake = 15;
+                    
+                    // Destroy nearby obstacles
+                    obstacles.forEach((obs, i) => {
+                        if (Math.abs(obs.x - player.x) < 120) {
+                            obstacles.splice(i, 1);
+                            score += 50;
+                            createExplosion(obs.x, obs.y, colors.purple, 20);
+                            createFloatingText(obs.x, obs.y - 30, '+50', colors.yellow);
+                        }
+                    });
+                    
+                    // Impact particles
+                    for (let i = 0; i < 20; i++) {
+                        particles.push({
+                            x: player.x + player.width/2,
+                            y: player.y + player.height,
+                            vx: (Math.random() - 0.5) * 15,
+                            vy: -Math.random() * 10,
+                            size: 4 + Math.random() * 6,
+                            color: colors.purple,
+                            life: 40
+                        });
+                    }
+                }
             }
             
-            // Running animation
             if (!player.jumping) {
-                player.runFrame += 0.2;
+                player.runFrame += 0.25;
             }
             
-            // Invincibility frames
-            if (player.invincible > 0) player.invincible--;
+            // ✅ Dash effect
+            if (player.dashActive && gameSpeed > 2) {
+                player.trail.push({
+                    x: player.x,
+                    y: player.y,
+                    alpha: 0.6,
+                    life: 12
+                });
+            }
+            player.trail.forEach((t, i) => {
+                t.life--;
+                t.alpha *= 0.9;
+                if (t.life <= 0) player.trail.splice(i, 1);
+            });
             
-            // Combo timer
+            if (player.invincible > 0) player.invincible--;
+            if (player.chefMode > 0) player.chefMode--;
+            
             if (comboTimer > 0) {
                 comboTimer--;
                 if (comboTimer === 0) combo = 0;
             }
             
-            // Tutorial fade
             if (showTutorial && frame > 300) {
                 tutorialAlpha -= 0.01;
-                if (tutorialAlpha <= 0) {
-                    showTutorial = false;
-                }
+                if (tutorialAlpha <= 0) showTutorial = false;
             }
             
-            // Background elements
-            clouds.forEach(cloud => {
-                cloud.x -= cloud.speed;
-                if (cloud.x < -cloud.size) cloud.x = canvas.width + cloud.size;
+            buildings.forEach(b => {
+                b.x -= b.speed * gameSpeed;
+                if (b.x + b.width < 0) b.x = canvas.width + Math.random() * 200;
             });
             
-            stars.forEach(star => {
-                star.twinkle = (star.twinkle + 1) % 120;
+            clouds.forEach(c => {
+                c.x -= c.speed * gameSpeed;
+                if (c.x < -c.size) c.x = canvas.width + c.size;
             });
             
-            // Spawn logic with BETTER SPACING
-            const minDistance = 350 + Math.max(0, 500 - frame); // More space early game
-            if (frame % 90 === 0 && (obstacles.length === 0 || canvas.width - obstacles[obstacles.length - 1].x > minDistance)) {
-                spawnObstacle();
+            stars.forEach(s => s.twinkle = (s.twinkle + 1) % 120);
+
+            birds.forEach(b => {
+                b.x -= b.speed * gameSpeed;
+                b.wingFrame += 0.3;
+                if (b.x < -20) b.x = canvas.width + 20;
+            });
+            
+            // ✅ BOSS UPDATE
+            if (boss) {
+                updateBoss();
+            } else {
+                // Normal gameplay
+                const obstacleInterval = frame < 300 ? 150 : 120;
+                if (frame % obstacleInterval === 0) spawnObstacle();
+                if (frame % 130 === 0) spawnCollectible();
+                
+                spawnShop();
+                spawnSpecialChar();
             }
             
-            if (frame % 120 === 0 && (collectibles.length === 0 || canvas.width - collectibles[collectibles.length - 1].x > 300)) {
-                spawnCollectible();
-            }
-            
-            spawnPowerup();
-            
-            // Move obstacles
             obstacles.forEach((obs, index) => {
-                obs.x -= gameSpeed * 4 * selectedChar.speed;
+                obs.x -= gameSpeed * 3.5 * selectedChar.speed;
                 obs.pulseFrame += 0.15;
                 
-                // Collision detection
-                if (!player.invincible &&
+                // ✅ Shield destroys obstacles
+                if (player.shieldActive &&
                     player.x < obs.x + obs.width &&
                     player.x + player.width > obs.x &&
                     player.y + player.height > obs.y &&
                     player.y < obs.y + obs.height) {
-                    
+                    obstacles.splice(index, 1);
+                    score += 50;
+                    createExplosion(obs.x, obs.y, colors.red, 15);
+                    createFloatingText(obs.x, obs.y - 30, '+50', colors.yellow);
+                    return;
+                }
+                
+                if (!player.invincible && !player.chefMode && !player.shieldActive &&
+                    player.x < obs.x + obs.width &&
+                    player.x + player.width > obs.x &&
+                    player.y + player.height > obs.y &&
+                    player.y < obs.y + obs.height) {
                     hitObstacle();
                 }
                 
-                // Remove off-screen
                 if (obs.x < -obs.width) {
                     obstacles.splice(index, 1);
                     score += 10;
                 }
             });
             
-            // Move collectibles
             collectibles.forEach((col, index) => {
-                col.x -= gameSpeed * 4 * selectedChar.speed;
-                col.floatOffset += 0.08;
+                col.x -= gameSpeed * 3.5 * selectedChar.speed;
+                col.floatOffset += 0.1;
                 
-                // Collision detection
+                // ✅ Dash magnet effect
+                if (player.dashActive) {
+                    const dx = player.x - col.x;
+                    const dy = player.y - col.y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    
+                    if (dist < 150) {
+                        col.x += dx * 0.15;
+                        col.y += dy * 0.15;
+                    }
+                }
+                
                 if (player.x < col.x + col.width &&
                     player.x + player.width > col.x &&
                     player.y < col.y + col.height &&
                     player.y + player.height > col.y) {
-                    
                     collectItem(col, index);
                 }
                 
-                // Remove off-screen
                 if (col.x < -col.width) {
                     collectibles.splice(index, 1);
                 }
             });
             
-            // Move powerups
-            powerups.forEach((pow, index) => {
-                pow.x -= gameSpeed * 3;
-                pow.floatOffset += 0.1;
+            if (shopIcon) {
+                shopIcon.x -= gameSpeed * 2.5;
+                shopIcon.floatOffset += 0.12;
                 
-                // Collision detection
-                if (player.x < pow.x + pow.width &&
-                    player.x + player.width > pow.x &&
-                    player.y < pow.y + pow.height &&
-                    player.y + player.height > pow.y) {
-                    
-                    activatePowerup(pow);
-                    powerups.splice(index, 1);
+                if (player.x < shopIcon.x + shopIcon.width &&
+                    player.x + player.width > shopIcon.x &&
+                    player.y < shopIcon.y + shopIcon.height &&
+                    player.y + player.height > shopIcon.y) {
+                    shopIcon = null;
+                    openShop();
                 }
                 
-                if (pow.x < -pow.width) {
-                    powerups.splice(index, 1);
+                if (shopIcon && shopIcon.x < -shopIcon.width) {
+                    shopIcon = null;
+                }
+            }
+            
+            specialChars.forEach((sc, index) => {
+                if (sc.type === 'chef') {
+                    sc.x -= gameSpeed * 1.5;
+                    sc.floatOffset += 0.15;
+                    
+                    if (player.x < sc.x + sc.width &&
+                        player.x + player.width > sc.x &&
+                        player.y < sc.y + sc.height &&
+                        player.y + player.height > sc.y) {
+                        activateChef();
+                        specialChars.splice(index, 1);
+                    }
+                    
+                    if (sc.x < -sc.width) specialChars.splice(index, 1);
+                    
+                } else if (sc.type === 'ivancito') {
+                    sc.x -= gameSpeed * 3.5 * selectedChar.speed;
+                    sc.runFrame += 0.3;
+                    sc.lifeTime++;
+                    
+                    if (sc.lifeTime > 480) {
+                        specialChars.splice(index, 1);
+                        return;
+                    }
+                    
+                    const distance = Math.abs(sc.x - player.x);
+                    if (distance < 100 && sc.photosTaken < 3) {
+                        sc.photoTimer++;
+                        if (sc.photoTimer >= 30) {
+                            takePhoto(sc);
+                            sc.photosTaken++;
+                            sc.photoTimer = 0;
+                        }
+                    }
+                    
+                    if (sc.photosTaken >= 3 || sc.x < -sc.width) {
+                        specialChars.splice(index, 1);
+                    }
+                    
+                } else if (sc.type === 'luisito') {
+                    sc.x -= gameSpeed * 1.5;
+                    sc.floatOffset += 0.1;
+                    
+                    const distance = player.x - sc.x;
+                    if (!sc.activated && distance > -30 && distance < 30) {
+                        activateLuisito(sc);
+                        sc.activated = true;
+                    }
+                    
+                    if (sc.x < -200) specialChars.splice(index, 1);
                 }
             });
             
-            // Update particles
             particles.forEach((p, index) => {
                 p.x += p.vx;
                 p.y += p.vy;
-                p.vx *= 0.95;
-                p.vy *= 0.95;
+                p.vx *= 0.96;
+                p.vy *= 0.96;
                 p.life--;
                 if (p.life <= 0) particles.splice(index, 1);
             });
             
-            // Update floating texts
             floatingTexts.forEach((ft, index) => {
                 ft.y += ft.vy;
                 ft.life--;
                 if (ft.life <= 0) floatingTexts.splice(index, 1);
             });
             
-            // GRADUAL difficulty increase (every 15 sec instead of 10)
-            if (frame % 900 === 0 && gameSpeed < 4) {
-                gameSpeed += 0.15; // Slower increase
+            if (frame % 1200 === 0 && gameSpeed < 3 && !boss) {
+                gameSpeed += 0.15;
             }
         }
 
-        // ═══════════════════════════════════════════════════════════════════
-        // GAME EVENTS
-        // ═══════════════════════════════════════════════════════════════════
+        // ✅ BOSS UPDATE
+        function updateBoss() {
+            if (!boss || boss.defeated) return;
+            
+            boss.invincible = Math.max(0, boss.invincible - 1);
+            boss.attackTimer++;
+            
+            // Movement
+            boss.x += boss.moveDir * boss.speed;
+            if (boss.x < 50 || boss.x > canvas.width - 150) {
+                boss.moveDir *= -1;
+            }
+            
+            // Phase changes
+            if (boss.hp <= 6 && boss.phase === 1) {
+                boss.phase = 2;
+                boss.speed = 3;
+                screenShake = 20;
+                createFloatingText(canvas.width/2 - 80, 200, 'PHASE 2!', colors.red);
+            }
+            if (boss.hp <= 3 && boss.phase === 2) {
+                boss.phase = 3;
+                boss.speed = 4;
+                screenShake = 25;
+                createFloatingText(canvas.width/2 - 80, 200, 'FINAL PHASE!', colors.red);
+            }
+            
+            // Attacks
+            if (boss.attackTimer > 90 && boss.phase === 1) {
+                spawnBossProjectile('bigmac');
+                boss.attackTimer = 0;
+            }
+            if (boss.attackTimer > 70 && boss.phase === 2) {
+                spawnBossProjectile('fries');
+                boss.attackTimer = 0;
+            }
+            if (boss.attackTimer > 50 && boss.phase === 3) {
+                spawnBossProjectile('happymeal');
+                boss.attackTimer = 0;
+            }
+            
+            // Update projectiles
+            bossProjectiles.forEach((proj, i) => {
+                proj.x -= 6;
+                proj.floatOffset += 0.15;
+                
+                // Hit player
+                if (!player.invincible && !player.shieldActive &&
+                    player.x < proj.x + proj.width &&
+                    player.x + player.width > proj.x &&
+                    player.y < proj.y + proj.height &&
+                    player.y + player.height > proj.y) {
+                    hitObstacle();
+                    bossProjectiles.splice(i, 1);
+                }
+                
+                if (proj.x < -50) bossProjectiles.splice(i, 1);
+            });
+            
+            // Player can jump on boss
+            if (!boss.invincible && player.vy > 0 &&
+                player.x < boss.x + boss.width &&
+                player.x + player.width > boss.x &&
+                player.y + player.height > boss.y &&
+                player.y + player.height < boss.y + 40) {
+                
+                hitBoss();
+                player.vy = -12; // Bounce
+            }
+        }
+
+        function spawnBossProjectile(type) {
+            const proj = {
+                x: boss.x,
+                y: boss.y + boss.height/2,
+                width: 40,
+                height: 40,
+                type: type,
+                floatOffset: 0
+            };
+            
+            if (type === 'bigmac') {
+                proj.emoji = '🍔';
+            } else if (type === 'fries') {
+                proj.emoji = '🍟';
+            } else if (type === 'happymeal') {
+                proj.emoji = '📦';
+            }
+            
+            bossProjectiles.push(proj);
+        }
+
+        function hitBoss() {
+            boss.hp--;
+            boss.invincible = 30;
+            screenShake = 12;
+            
+            sounds.bossHit();
+            createExplosion(player.x + player.width/2, boss.y + 20, colors.red, 25);
+            createFloatingText(boss.x + 20, boss.y - 30, '-1 HP', colors.red);
+            score += 200;
+            
+            if (boss.hp <= 0) {
+                defeatBoss();
+            }
+        }
+
+        function defeatBoss() {
+            boss.defeated = true;
+            bossDefeated = true;
+            
+            screenShake = 30;
+            sounds.bossDefeat();
+            
+            // Explosion sequence
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createExplosion(
+                        boss.x + Math.random() * boss.width,
+                        boss.y + Math.random() * boss.height,
+                        [colors.red, colors.orange, colors.yellow][Math.floor(Math.random() * 3)],
+                        15
+                    );
+                }, i * 50);
+            }
+            
+            score += 2000;
+            createFloatingText(canvas.width/2 - 120, 250, '¡BOSS DERROTADO!', colors.yellow);
+            createFloatingText(canvas.width/2 - 80, 290, '+2000 PUNTOS', colors.cyan);
+            
+            // Remove boss and continue game at x2 speed
+            setTimeout(() => {
+                boss = null;
+                gameSpeed *= 2;
+                bossMusicPlaying = false;
+                playBGM();
+                createFloatingText(canvas.width/2 - 120, 350, '¡MODO TURBO! x2', colors.pink);
+            }, 2500);
+        }
+
+        // ✅ POWER ACTIVATIONS
+        function activateShield() {
+            player.powerActive = true;
+            player.shieldActive = true;
+            player.powerTimer = selectedChar.powerDuration;
+            sounds.shield();
+            
+            createFloatingText(player.x - 30, player.y - 40, 'SALSA SHIELD!', colors.red);
+            createExplosion(player.x + player.width/2, player.y + player.height/2, colors.red, 20);
+        }
+
+        function activateDash() {
+            player.powerActive = true;
+            player.dashActive = true;
+            player.powerTimer = selectedChar.powerDuration;
+            sounds.dash();
+            
+            createFloatingText(player.x - 30, player.y - 40, 'AVOCADO DASH!', colors.green);
+            
+            // Speed boost
+            const originalSpeed = gameSpeed;
+            gameSpeed *= 2;
+            setTimeout(() => {
+                if (gameSpeed === originalSpeed * 2) { // Only revert if not changed by other means
+                    gameSpeed = originalSpeed;
+                }
+            }, selectedChar.powerDuration * 16.67); // Convert frames to ms
+        }
+
         function hitObstacle() {
             player.lives--;
             player.invincible = 120;
             combo = 0;
             comboTimer = 0;
             
-            sounds.hit();
-            createExplosion(player.x + player.width/2, player.y + player.height/2, colors.red);
-            createFloatingText(player.x, player.y - 30, '-1 LIFE', colors.red);
+            screenShake = 15;
             
-            if (player.lives <= 0) {
-                endGame();
-            }
+            sounds.hit();
+            createExplosion(player.x + player.width/2, player.y + player.height/2, colors.red, 25);
+            createFloatingText(player.x, player.y - 30, '-1 VIDA', colors.red);
+            
+            if (player.lives <= 0) endGame();
         }
 
         function collectItem(col, index) {
             combo++;
             comboTimer = 180;
             
-            let points = col.points * combo;
+            let points = col.points;
+            if (player.chefMode > 0) points *= 3;
+            if (player.dashActive) points *= 2;
+            points *= combo;
             score += points;
             
             sounds.collect();
             collectibles.splice(index, 1);
             
-            createExplosion(col.x + col.width/2, col.y + col.height/2, colors.lime);
+            createExplosion(col.x, col.y, colors.lime, 18);
             createFloatingText(col.x, col.y - 20, `+${points}${combo > 1 ? ' x'+combo : ''}`, colors.yellow);
         }
 
-        function activatePowerup(pow) {
+        function activateChef() {
+            player.chefMode = 600;
+            player.invincible = 600;
+            
+            screenShake = 20;
+            
             sounds.powerup();
+            createFloatingText(canvas.width/2 - 100, 200, '¡COCINA POP POWER!', colors.yellow);
+            createExplosion(player.x + player.width/2, player.y + player.height/2, colors.yellow, 30);
+        }
+
+        function takePhoto(ivancito) {
+            screenShake = 8;
             
-            if (pow.type === 'shield') {
-                player.invincible = 300;
-                createFloatingText(pow.x, pow.y - 20, 'SHIELD!', colors.cyan);
-            } else if (pow.type === 'magnet') {
-                // Attract nearby collectibles
-                collectibles.forEach(col => {
-                    if (Math.abs(col.x - player.x) < 300) {
-                        score += col.points * 2;
-                        createExplosion(col.x + col.width/2, col.y + col.height/2, colors.lime);
+            sounds.powerup();
+            score += 150;
+            createFloatingText(ivancito.x, ivancito.y - 30, '¡DIVINA!', colors.pink);
+            createFloatingText(ivancito.x + 20, ivancito.y - 50, '+150', colors.yellow);
+            createExplosion(ivancito.x, ivancito.y, colors.pink, 12);
+        }
+
+        function activateLuisito(luisito) {
+            sounds.powerup();
+            createFloatingText(luisito.x - 20, luisito.y - 40, '¡ZARLANGAS', colors.cyan);
+            createFloatingText(luisito.x - 10, luisito.y - 60, 'MAÑANAS!', colors.cyan);
+            
+            const rewards = [
+                { type: 'points', value: 200 },
+                { type: 'life', value: 1 },
+                { type: 'shield', value: 150 }
+            ];
+            
+            for (let i = 0; i < 3; i++) {
+                const reward = rewards[Math.floor(Math.random() * rewards.length)];
+                setTimeout(() => {
+                    if (reward.type === 'points') {
+                        score += reward.value;
+                        createFloatingText(luisito.x + i * 30, luisito.y - 80 - i * 20, `+${reward.value}`, colors.yellow);
+                    } else if (reward.type === 'life') {
+                        player.lives = Math.min(player.lives + 1, player.maxLives);
+                        createFloatingText(luisito.x + i * 30, luisito.y - 80 - i * 20, '+1 ❤️', colors.red);
+                    } else {
+                        player.invincible = reward.value;
+                        createFloatingText(luisito.x + i * 30, luisito.y - 80 - i * 20, '🛡️', colors.cyan);
                     }
-                });
-                collectibles = [];
-                createFloatingText(pow.x, pow.y - 20, 'MAGNET!', colors.yellow);
-            } else if (pow.type === 'slow') {
-                gameSpeed *= 0.5;
-                setTimeout(() => { gameSpeed *= 2; }, 3000);
-                createFloatingText(pow.x, pow.y - 20, 'SLOW MO!', colors.purple);
+                    createExplosion(luisito.x + i * 30, luisito.y - 80 - i * 20, colors.cyan, 15);
+                }, i * 200);
             }
-            
-            createExplosion(pow.x + pow.width/2, pow.y + pow.height/2, colors.cyan);
         }
 
         function endGame() {
             gameOver = true;
             gameStarted = false;
-            sounds.gameOver();
+            sounds.hit();
             
             if (score > highScore) {
                 highScore = score;
@@ -1052,19 +1785,30 @@
             document.getElementById('gameOverScreen').classList.add('show');
         }
 
-        // ═══════════════════════════════════════════════════════════════════
-        // EFFECTS
-        // ═══════════════════════════════════════════════════════════════════
-        function createExplosion(x, y, color) {
-            for (let i = 0; i < 15; i++) {
+        function createExplosion(x, y, color, count = 12) {
+            for (let i = 0; i < count; i++) {
                 particles.push({
                     x: x,
                     y: y,
                     vx: (Math.random() - 0.5) * 10,
                     vy: (Math.random() - 0.5) * 10,
-                    size: 3 + Math.random() * 4,
+                    size: 3 + Math.random() * 5,
                     color: color,
-                    life: 40 + Math.random() * 20
+                    life: 45
+                });
+            }
+        }
+
+        function createParticles(x, y, color, count) {
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: x,
+                    y: y,
+                    vx: (Math.random() - 0.5) * 7,
+                    vy: (Math.random() - 0.5) * 7,
+                    size: 2 + Math.random() * 4,
+                    color: color,
+                    life: 35
                 });
             }
         }
@@ -1076,136 +1820,404 @@
                 vy: -1.5,
                 text: text,
                 color: color,
-                life: 80
+                life: 70
             });
         }
 
-        // ═══════════════════════════════════════════════════════════════════
-        // DRAW
-        // ═══════════════════════════════════════════════════════════════════
         function drawPlayer() {
             const x = player.x;
             const y = player.y;
             const w = player.width;
             const h = player.height;
             
-            // Invincibility blink
-            if (player.invincible > 0 && frame % 10 < 5) {
+            player.trail.forEach(t => {
+                ctx.globalAlpha = t.alpha * 0.4;
+                ctx.fillStyle = selectedChar.color;
+                ctx.fillRect(t.x + 10, t.y + 30, w - 20, h - 30);
+                ctx.globalAlpha = 1;
+            });
+            
+            // ✅ SHIELD VISUAL
+            if (player.shieldActive) {
+                const pulseSize = Math.sin(frame * 0.2) * 5;
+                ctx.strokeStyle = colors.red;
+                ctx.lineWidth = 5;
+                ctx.globalAlpha = 0.7;
+                ctx.strokeRect(x - 15 + pulseSize, y - 15 + pulseSize, w + 30 - pulseSize*2, h + 30 - pulseSize*2);
+                ctx.globalAlpha = 1;
+                
+                // Rotating shield particles
+                for (let i = 0; i < 4; i++) {
+                    const angle = (frame * 0.1 + i * Math.PI / 2);
+                    const particleX = x + w/2 + Math.cos(angle) * 45;
+                    const particleY = y + h/2 + Math.sin(angle) * 45;
+                    ctx.fillStyle = colors.red;
+                    ctx.fillRect(particleX, particleY, 6, 6);
+                }
+            }
+            
+            // ✅ DASH VISUAL
+            if (player.dashActive) {
+                const rainbowColors = [colors.lime, colors.green, colors.cyan];
+                for (let i = 0; i < 3; i++) {
+                    const angle = (frame * 0.15 + i * Math.PI * 2 / 3);
+                    const particleX = x + w/2 + Math.cos(angle) * 40;
+                    const particleY = y + h/2 + Math.sin(angle) * 40;
+                    ctx.fillStyle = rainbowColors[i];
+                    ctx.fillRect(particleX, particleY, 5, 5);
+                }
+            }
+            
+            if (player.chefMode > 0) {
+                const rainbowColors = [colors.red, colors.orange, colors.yellow, colors.lime, colors.cyan, colors.pink];
+                for (let i = 0; i < 3; i++) {
+                    const angle = (frame * 0.1 + i * Math.PI * 2 / 3);
+                    const particleX = x + w/2 + Math.cos(angle) * 35;
+                    const particleY = y + h/2 + Math.sin(angle) * 35;
+                    ctx.fillStyle = rainbowColors[Math.floor(frame/5 + i) % rainbowColors.length];
+                    ctx.fillRect(particleX, particleY, 4, 4);
+                }
+                
+                ctx.fillStyle = `rgba(255, 215, 0, ${0.3 + Math.sin(frame * 0.2) * 0.2})`;
+                ctx.fillRect(x - 15, y - 15, w + 30, h + 30);
+            }
+            
+            if (player.invincible > 0 && player.chefMode === 0 && !player.shieldActive && frame % 10 < 5) {
                 ctx.globalAlpha = 0.5;
             }
             
-            // Character-specific color
             const charColor = selectedChar.color;
             
-            // Body
             ctx.fillStyle = charColor;
-            ctx.fillRect(x + 8, y + 25, w - 16, h - 25);
+            ctx.fillRect(x + 10, y + 30, w - 20, h - 30);
             
-            // Outline
             ctx.strokeStyle = colors.black;
             ctx.lineWidth = 3;
-            ctx.strokeRect(x + 8, y + 25, w - 16, h - 25);
+            ctx.strokeRect(x + 10, y + 30, w - 20, h - 30);
             
-            // Face
             ctx.fillStyle = colors.white;
-            ctx.fillRect(x + 14, y + 15, 7, 7); // left eye
-            ctx.fillRect(x + 29, y + 15, 7, 7); // right eye
+            ctx.fillRect(x + 16, y + 20, 8, 8);
+            ctx.fillRect(x + 31, y + 20, 8, 8);
             
             ctx.fillStyle = colors.black;
-            ctx.fillRect(x + 16, y + 17, 3, 3); // left pupil
-            ctx.fillRect(x + 31, y + 17, 3, 3); // right pupil
+            ctx.fillRect(x + 18, y + 22, 4, 4);
+            ctx.fillRect(x + 33, y + 22, 4, 4);
             
-            // Smile
             ctx.fillStyle = colors.black;
-            ctx.fillRect(x + 18, y + 55, 14, 3);
-            ctx.fillRect(x + 16, y + 53, 2, 2);
-            ctx.fillRect(x + 32, y + 53, 2, 2);
+            ctx.fillRect(x + 20, y + 60, 15, 3);
+            ctx.fillRect(x + 18, y + 58, 2, 2);
+            ctx.fillRect(x + 35, y + 58, 2, 2);
             
-            // Chef hat
             ctx.fillStyle = colors.white;
-            ctx.fillRect(x + 8, y, 34, 10);
-            ctx.fillRect(x + 12, y - 12, 26, 12);
+            ctx.fillRect(x + 10, y + 5, 35, 10);
+            ctx.fillRect(x + 14, y - 8, 27, 13);
             ctx.strokeStyle = colors.black;
             ctx.lineWidth = 2;
-            ctx.strokeRect(x + 8, y, 34, 10);
-            ctx.strokeRect(x + 12, y - 12, 26, 12);
+            ctx.strokeRect(x + 10, y + 5, 35, 10);
+            ctx.strokeRect(x + 14, y - 8, 27, 13);
             
-            // Arms (animated)
-            const armOffset = Math.floor(player.runFrame) % 2 === 0 ? 3 : -3;
+            const armOffset = Math.floor(player.runFrame) % 2 === 0 ? 4 : -4;
             ctx.fillStyle = charColor;
-            ctx.fillRect(x + 2, y + 35 + armOffset, 6, 15);
-            ctx.fillRect(x + w - 8, y + 35 - armOffset, 6, 15);
+            ctx.fillRect(x + 2, y + 40 + armOffset, 8, 18);
+            ctx.fillRect(x + w - 10, y + 40 - armOffset, 8, 18);
             
-            // Legs (running animation)
             if (!player.jumping) {
                 const legFrame = Math.floor(player.runFrame);
                 ctx.fillStyle = colors.black;
                 if (legFrame % 2 === 0) {
-                    ctx.fillRect(x + 12, y + h, 10, 6);
-                    ctx.fillRect(x + 28, y + h - 4, 10, 6);
+                    ctx.fillRect(x + 15, y + h, 12, 7);
+                    ctx.fillRect(x + 30, y + h - 5, 12, 7);
                 } else {
-                    ctx.fillRect(x + 12, y + h - 4, 10, 6);
-                    ctx.fillRect(x + 28, y + h, 10, 6);
+                    ctx.fillRect(x + 15, y + h - 5, 12, 7);
+                    ctx.fillRect(x + 30, y + h, 12, 7);
                 }
             } else {
                 ctx.fillStyle = colors.black;
-                ctx.fillRect(x + 12, y + h - 2, 10, 6);
-                ctx.fillRect(x + 28, y + h - 2, 10, 6);
+                ctx.fillRect(x + 15, y + h - 3, 12, 7);
+                ctx.fillRect(x + 30, y + h - 3, 12, 7);
             }
             
             ctx.globalAlpha = 1;
         }
 
+        function drawSpecialChar(sc) {
+            if (sc.type === 'chef') {
+                const floatY = sc.y + Math.sin(sc.floatOffset) * 15;
+                
+                ctx.fillStyle = `rgba(255, 215, 0, 0.4)`;
+                ctx.fillRect(sc.x - 15, floatY - 15, sc.width + 30, sc.height + 30);
+                
+                ctx.fillStyle = colors.orange;
+                ctx.fillRect(sc.x + 5, floatY + 30, sc.width - 10, sc.height - 30);
+                
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 3;
+                ctx.strokeRect(sc.x + 5, floatY + 30, sc.width - 10, sc.height - 30);
+                
+                ctx.fillStyle = colors.white;
+                ctx.fillRect(sc.x + 12, floatY + 20, 10, 10);
+                ctx.fillRect(sc.x + 30, floatY + 20, 10, 10);
+                
+                ctx.fillStyle = colors.black;
+                ctx.fillRect(sc.x + 15, floatY + 23, 4, 4);
+                ctx.fillRect(sc.x + 33, floatY + 23, 4, 4);
+                
+                ctx.fillStyle = colors.white;
+                ctx.fillRect(sc.x, floatY - 5, sc.width, 15);
+                ctx.fillRect(sc.x + 5, floatY - 25, sc.width - 10, 20);
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 3;
+                ctx.strokeRect(sc.x, floatY - 5, sc.width, 15);
+                ctx.strokeRect(sc.x + 5, floatY - 25, sc.width - 10, 20);
+                
+                ctx.font = 'bold 12px Courier';
+                ctx.fillStyle = colors.yellow;
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 3;
+                ctx.strokeText('EL CHEF', sc.x - 10, floatY - 30);
+                ctx.fillText('EL CHEF', sc.x - 10, floatY - 30);
+                
+            } else if (sc.type === 'ivancito') {
+                ctx.fillStyle = colors.blue;
+                ctx.fillRect(sc.x + 5, sc.y + 25, sc.width - 10, sc.height - 25);
+                
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 3;
+                ctx.strokeRect(sc.x + 5, sc.y + 25, sc.width - 10, sc.height - 25);
+                
+                ctx.fillStyle = colors.white;
+                ctx.fillRect(sc.x + 12, sc.y + 15, 8, 8);
+                ctx.fillRect(sc.x + 25, sc.y + 15, 8, 8);
+                
+                ctx.fillStyle = colors.black;
+                ctx.fillRect(sc.x + 14, sc.y + 17, 4, 4);
+                ctx.fillRect(sc.x + 27, sc.y + 17, 4, 4);
+                
+                ctx.fillStyle = colors.black;
+                ctx.fillRect(sc.x + 15, sc.y + 40, 20, 15);
+                ctx.fillStyle = colors.white;
+                ctx.fillRect(sc.x + 20, sc.y + 43, 10, 9);
+                
+                const legFrame = Math.floor(sc.runFrame);
+                ctx.fillStyle = colors.black;
+                if (legFrame % 2 === 0) {
+                    ctx.fillRect(sc.x + 12, sc.y + sc.height, 10, 6);
+                    ctx.fillRect(sc.x + 25, sc.y + sc.height - 4, 10, 6);
+                } else {
+                    ctx.fillRect(sc.x + 12, sc.y + sc.height - 4, 10, 6);
+                    ctx.fillRect(sc.x + 25, sc.y + sc.height, 10, 6);
+                }
+                
+                ctx.font = 'bold 11px Courier';
+                ctx.fillStyle = colors.pink;
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 3;
+                ctx.strokeText('IVANCITO', sc.x - 10, sc.y - 10);
+                ctx.fillText('IVANCITO', sc.x - 10, sc.y - 10);
+                
+            } else if (sc.type === 'luisito') {
+                const floatY = sc.y + Math.sin(sc.floatOffset) * 8;
+                
+                ctx.fillStyle = colors.brown;
+                ctx.fillRect(sc.x + 10, floatY + 40, 35, 10);
+                ctx.fillRect(sc.x + 10, floatY + 50, 5, 20);
+                ctx.fillRect(sc.x + 40, floatY + 50, 5, 20);
+                
+                ctx.fillStyle = colors.black;
+                ctx.fillRect(sc.x + 8, floatY + 25, sc.width - 16, sc.height - 35);
+                
+                ctx.strokeStyle = colors.white;
+                ctx.lineWidth = 2;
+                ctx.strokeRect(sc.x + 8, floatY + 25, sc.width - 16, sc.height - 35);
+                
+                ctx.fillStyle = '#FFD9B3';
+                ctx.fillRect(sc.x + 15, floatY + 10, 25, 20);
+                
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 2;
+                ctx.strokeRect(sc.x + 16, floatY + 15, 10, 8);
+                ctx.strokeRect(sc.x + 29, floatY + 15, 10, 8);
+                ctx.beginPath();
+                ctx.moveTo(sc.x + 26, floatY + 19);
+                ctx.lineTo(sc.x + 29, floatY + 19);
+                ctx.stroke();
+                
+                ctx.fillStyle = colors.black;
+                ctx.fillRect(sc.x + 10, floatY, 35, 8);
+                ctx.fillRect(sc.x + 15, floatY - 10, 25, 10);
+                
+                ctx.strokeStyle = colors.white;
+                ctx.lineWidth = 1;
+                ctx.strokeRect(sc.x + 10, floatY, 35, 2);
+                
+                ctx.font = 'bold 11px Courier';
+                ctx.fillStyle = colors.cyan;
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 3;
+                ctx.strokeText('LUISITO', sc.x - 5, floatY - 15);
+                ctx.fillText('LUISITO', sc.x - 5, floatY - 15);
+            }
+        }
+
+        // ✅ DRAW BOSS
+        function drawBoss() {
+            if (!boss || boss.defeated) return;
+            
+            const x = boss.x;
+            const y = boss.y;
+            const w = boss.width;
+            const h = boss.height;
+            
+            // Glow
+            const pulse = Math.sin(frame * 0.15) * 0.3 + 0.7;
+            ctx.fillStyle = `rgba(255, 0, 0, ${pulse * 0.4})`;
+            ctx.fillRect(x - 20, y - 20, w + 40, h + 40);
+            
+            // Invincibility blink
+            if (boss.invincible > 0 && frame % 8 < 4) {
+                ctx.globalAlpha = 0.5;
+            }
+            
+            // Body (red + yellow stripes)
+            ctx.fillStyle = colors.red;
+            ctx.fillRect(x + 10, y + 40, w - 20, h - 40);
+            
+            ctx.fillStyle = colors.yellow;
+            ctx.fillRect(x + 15, y + 50, w - 30, 8);
+            ctx.fillRect(x + 15, y + 65, w - 30, 8);
+            ctx.fillRect(x + 15, y + 80, w - 30, 8);
+            
+            ctx.strokeStyle = colors.black;
+            ctx.lineWidth = 4;
+            ctx.strokeRect(x + 10, y + 40, w - 20, h - 40);
+            
+            // Face (creepy)
+            ctx.fillStyle = colors.white;
+            ctx.fillRect(x + 20, y + 25, 15, 12);
+            ctx.fillRect(x + 50, y + 25, 15, 12);
+            
+            ctx.fillStyle = colors.black;
+            ctx.fillRect(x + 24, y + 28, 7, 6);
+            ctx.fillRect(x + 54, y + 28, 7, 6);
+            
+            // Evil smile
+            ctx.fillStyle = colors.black;
+            ctx.fillRect(x + 25, y + 50, 40, 5);
+            ctx.fillRect(x + 22, y + 47, 5, 4);
+            ctx.fillRect(x + 63, y + 47, 5, 4);
+            
+            // Hair (clown)
+            ctx.fillStyle = colors.orange;
+            ctx.fillRect(x, y + 10, w, 15);
+            ctx.fillRect(x + 10, y, w - 20, 10);
+            
+            // M Logo
+            ctx.fillStyle = colors.yellow;
+            ctx.font = 'bold 24px Arial';
+            ctx.fillText('M', x + w/2 - 8, y + 73);
+            
+            ctx.globalAlpha = 1;
+            
+            // HP Bar
+            const barWidth = 200;
+            const barHeight = 20;
+            const barX = canvas.width/2 - barWidth/2;
+            const barY = 50;
+            
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+            ctx.fillRect(barX - 5, barY - 5, barWidth + 10, barHeight + 10);
+            
+            ctx.fillStyle = colors.red;
+            ctx.fillRect(barX, barY, barWidth, barHeight);
+            
+            const hpPercent = boss.hp / boss.maxHp;
+            ctx.fillStyle = hpPercent > 0.3 ? colors.lime : colors.orange;
+            ctx.fillRect(barX, barY, barWidth * hpPercent, barHeight);
+            
+            ctx.strokeStyle = colors.black;
+            ctx.lineWidth = 3;
+            ctx.strokeRect(barX, barY, barWidth, barHeight);
+            
+            ctx.font = 'bold 14px Courier';
+            ctx.fillStyle = colors.white;
+            ctx.textAlign = 'center';
+            ctx.fillText(`RONALD McDONALD: ${boss.hp}/${boss.maxHp}`, canvas.width/2, barY + 15);
+            ctx.textAlign = 'left';
+        }
+
         function draw() {
-            // Sky gradient
+            ctx.save();
+            ctx.translate(cameraOffsetX, cameraOffsetY);
+            
             const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            gradient.addColorStop(0, '#1a1a3e');
-            gradient.addColorStop(0.5, '#2a2a5e');
-            gradient.addColorStop(1, '#0f0f2e');
+            gradient.addColorStop(0, colors.sky1);
+            gradient.addColorStop(0.4, colors.sky2);
+            gradient.addColorStop(1, '#2a4a6e');
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Stars
             stars.forEach(star => {
                 const alpha = (Math.sin(star.twinkle * 0.05) + 1) / 2;
-                ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.8})`;
+                ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.6})`;
                 ctx.fillRect(star.x, star.y, star.size, star.size);
             });
+
+            birds.forEach(bird => {
+                const wing = Math.sin(bird.wingFrame) > 0;
+                ctx.fillStyle = colors.black;
+                ctx.fillRect(bird.x, bird.y, 8, 3);
+                if (wing) {
+                    ctx.fillRect(bird.x - 3, bird.y - 2, 4, 2);
+                    ctx.fillRect(bird.x + 7, bird.y - 2, 4, 2);
+                } else {
+                    ctx.fillRect(bird.x - 2, bird.y - 3, 3, 2);
+                    ctx.fillRect(bird.x + 7, bird.y - 3, 3, 2);
+                }
+            });
             
-            // Clouds
+            buildings.forEach(b => {
+                ctx.fillStyle = b.color;
+                ctx.fillRect(b.x, b.y, b.width, b.height);
+                
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 2;
+                ctx.strokeRect(b.x, b.y, b.width, b.height);
+                
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 4; j++) {
+                        ctx.fillStyle = Math.random() > 0.5 ? colors.yellow : colors.black;
+                        ctx.fillRect(b.x + 10 + i * 20, b.y + 20 + j * 25, 12, 15);
+                    }
+                }
+            });
+            
             clouds.forEach(cloud => {
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
                 ctx.fillRect(cloud.x, cloud.y, cloud.size, cloud.size * 0.6);
                 ctx.fillRect(cloud.x + cloud.size * 0.3, cloud.y - cloud.size * 0.2, cloud.size * 0.7, cloud.size * 0.5);
             });
             
-            // Checkered floor (Wonder Boy style)
-            const tileSize = 50;
+            const tileSize = 60;
             for (let x = 0; x < canvas.width; x += tileSize) {
                 for (let y = groundY + player.height; y < canvas.height; y += tileSize) {
                     const checker = ((x/tileSize + y/tileSize) % 2 === 0);
-                    ctx.fillStyle = checker ? '#66BB66' : '#55AA55';
-                    ctx.fillRect(x - (frame * 3) % tileSize, y, tileSize, tileSize);
+                    ctx.fillStyle = checker ? '#77CC77' : '#66BB66';
+                    ctx.fillRect(x - (frame * 2.5) % tileSize, y, tileSize, tileSize);
                     
-                    // Brick pattern
                     ctx.strokeStyle = colors.black;
                     ctx.lineWidth = 2;
-                    ctx.strokeRect(x - (frame * 3) % tileSize, y, tileSize, tileSize);
+                    ctx.strokeRect(x - (frame * 2.5) % tileSize, y, tileSize, tileSize);
                 }
             }
             
-            // Draw player
             drawPlayer();
             
-            // Draw obstacles
             obstacles.forEach(obs => {
                 const pulse = Math.sin(obs.pulseFrame) * 0.3 + 0.7;
                 
-                // Danger glow
-                ctx.fillStyle = `rgba(255, 0, 0, ${pulse * 0.4})`;
-                ctx.fillRect(obs.x - 10, obs.y - 10, obs.width + 20, obs.height + 20);
+                ctx.fillStyle = `rgba(255, 0, 0, ${pulse * 0.5})`;
+                ctx.fillRect(obs.x - 14, obs.y - 14, obs.width + 28, obs.height + 28);
                 
-                // Main obstacle
                 ctx.fillStyle = colors.red;
                 ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
                 
@@ -1213,34 +2225,19 @@
                 ctx.lineWidth = 4;
                 ctx.strokeRect(obs.x, obs.y, obs.width, obs.height);
                 
-                // Danger pattern
-                if (obs.type === 'spike') {
-                    ctx.fillStyle = colors.black;
-                    for (let i = 0; i < 3; i++) {
-                        ctx.beginPath();
-                        ctx.moveTo(obs.x + i * 13, obs.y + obs.height);
-                        ctx.lineTo(obs.x + i * 13 + 6.5, obs.y);
-                        ctx.lineTo(obs.x + i * 13 + 13, obs.y + obs.height);
-                        ctx.fill();
-                    }
-                } else {
-                    ctx.fillStyle = colors.yellow;
-                    ctx.font = 'bold 28px Arial';
-                    ctx.fillText('!', obs.x + obs.width/2 - 6, obs.y + obs.height/2 + 10);
-                }
+                ctx.fillStyle = colors.yellow;
+                ctx.font = 'bold 32px Arial';
+                ctx.fillText('!', obs.x + obs.width/2 - 7, obs.y + obs.height/2 + 12);
             });
             
-            // Draw collectibles
             collectibles.forEach(col => {
-                const floatY = col.y + Math.sin(col.floatOffset) * 10;
+                const floatY = col.y + Math.sin(col.floatOffset) * 12;
                 
-                // Glow
-                ctx.fillStyle = `rgba(50, 205, 50, 0.5)`;
-                ctx.fillRect(col.x - 12, floatY - 12, col.width + 24, col.height + 24);
-                ctx.fillStyle = `rgba(50, 205, 50, 0.7)`;
-                ctx.fillRect(col.x - 6, floatY - 6, col.width + 12, col.height + 12);
+                for (let i = 3; i > 0; i--) {
+                    ctx.fillStyle = `rgba(50, 205, 50, ${0.15 * i})`;
+                    ctx.fillRect(col.x - i * 8, floatY - i * 8, col.width + i * 16, col.height + i * 16);
+                }
                 
-                // Main
                 ctx.fillStyle = colors.lime;
                 ctx.fillRect(col.x, floatY, col.width, col.height);
                 
@@ -1248,141 +2245,198 @@
                 ctx.lineWidth = 4;
                 ctx.strokeRect(col.x, floatY, col.width, col.height);
                 
-                // Emoji
-                ctx.font = '32px Arial';
-                ctx.fillText(col.emoji, col.x + 4, floatY + 30);
+                ctx.font = '36px Arial';
+                ctx.fillText(col.emoji, col.x + 4, floatY + 34);
                 
-                // Sparkles
-                if (frame % 30 < 15) {
+                if (frame % 20 < 10) {
                     ctx.fillStyle = colors.yellow;
-                    ctx.fillRect(col.x - 5, floatY + 8, 4, 4);
-                    ctx.fillRect(col.x + col.width + 1, floatY + 8, 4, 4);
-                    ctx.fillRect(col.x + col.width/2 - 2, floatY - 6, 4, 4);
+                    ctx.fillRect(col.x - 6, floatY + 10, 6, 6);
+                    ctx.fillRect(col.x + col.width, floatY + 10, 6, 6);
+                    ctx.fillRect(col.x + col.width/2 - 3, floatY - 10, 6, 6);
                 }
             });
             
-            // Draw powerups
-            powerups.forEach(pow => {
-                const floatY = pow.y + Math.sin(pow.floatOffset) * 12;
+            if (shopIcon) {
+                const floatY = shopIcon.y + Math.sin(shopIcon.floatOffset) * 15;
                 
-                // Rainbow glow
-                ctx.fillStyle = `rgba(0, 255, 255, 0.4)`;
-                ctx.fillRect(pow.x - 10, floatY - 10, pow.width + 20, pow.height + 20);
+                ctx.fillStyle = `rgba(255, 215, 0, 0.5)`;
+                ctx.fillRect(shopIcon.x - 20, floatY - 20, shopIcon.width + 40, shopIcon.height + 40);
                 
-                // Main
-                ctx.fillStyle = colors.cyan;
-                ctx.fillRect(pow.x, floatY, pow.width, pow.height);
+                ctx.fillStyle = colors.yellow;
+                ctx.fillRect(shopIcon.x, floatY, shopIcon.width, shopIcon.height);
                 
                 ctx.strokeStyle = colors.black;
-                ctx.lineWidth = 4;
-                ctx.strokeRect(pow.x, floatY, pow.width, pow.height);
+                ctx.lineWidth = 5;
+                ctx.strokeRect(shopIcon.x, floatY, shopIcon.width, shopIcon.height);
                 
-                // Icon
-                ctx.font = '36px Arial';
-                ctx.fillText(pow.icon, pow.x + 4, floatY + 34);
+                ctx.font = 'bold 50px Arial';
+                ctx.fillText('🏪', shopIcon.x + 6, floatY + 46);
+                
+                ctx.font = 'bold 14px Courier';
+                ctx.fillStyle = colors.black;
+                ctx.fillText('SHOP', shopIcon.x + 10, floatY - 10);
+            }
+            
+            specialChars.forEach(sc => drawSpecialChar(sc));
+            
+            // ✅ Draw boss projectiles
+            bossProjectiles.forEach(proj => {
+                const floatY = proj.y + Math.sin(proj.floatOffset) * 6;
+                
+                ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+                ctx.fillRect(proj.x - 8, floatY - 8, proj.width + 16, proj.height + 16);
+                
+                ctx.font = '40px Arial';
+                ctx.fillText(proj.emoji, proj.x, floatY + 30);
             });
             
-            // Draw particles
+            // ✅ Draw boss
+            drawBoss();
+            
             particles.forEach(p => {
-                ctx.fillStyle = p.color;
-                ctx.globalAlpha = p.life / 60;
-                ctx.fillRect(p.x, p.y, p.size, p.size);
+                if (p.emoji) {
+                    ctx.font = '16px Arial';
+                    ctx.globalAlpha = p.life / 25;
+                    ctx.fillText(p.emoji, p.x, p.y);
+                } else {
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.life / 45;
+                    ctx.fillRect(p.x, p.y, p.size, p.size);
+                }
                 ctx.globalAlpha = 1;
             });
             
-            // Draw floating texts
             floatingTexts.forEach(ft => {
-                ctx.font = 'bold 28px Courier';
+                ctx.font = 'bold 24px Courier';
                 ctx.fillStyle = ft.color;
                 ctx.strokeStyle = colors.black;
                 ctx.lineWidth = 4;
-                ctx.globalAlpha = ft.life / 80;
+                ctx.globalAlpha = ft.life / 70;
                 ctx.strokeText(ft.text, ft.x, ft.y);
                 ctx.fillText(ft.text, ft.x, ft.y);
                 ctx.globalAlpha = 1;
             });
             
-            // HUD
+            ctx.restore();
+            
             drawHUD();
             
-            // Tutorial
             if (showTutorial) {
                 ctx.globalAlpha = tutorialAlpha;
                 
                 ctx.fillStyle = colors.lime;
-                ctx.font = 'bold 36px Courier';
+                ctx.font = 'bold 28px Courier';
                 ctx.strokeStyle = colors.black;
                 ctx.lineWidth = 5;
-                ctx.strokeText('COLLECT THESE! ↑', canvas.width/2 - 160, 120);
-                ctx.fillText('COLLECT THESE! ↑', canvas.width/2 - 160, 120);
+                ctx.strokeText('AGARRÁ ESTO! ↑', canvas.width/2 - 120, 150);
+                ctx.fillText('AGARRÁ ESTO! ↑', canvas.width/2 - 120, 150);
                 
                 ctx.fillStyle = colors.red;
-                ctx.strokeText('AVOID THESE! ↓', canvas.width/2 - 140, groundY + 90);
-                ctx.fillText('AVOID THESE! ↓', canvas.width/2 - 140, groundY + 90);
+                ctx.strokeText('EVITÁ ESTO! ↓', canvas.width/2 - 110, groundY + 80);
+                ctx.fillText('EVITÁ ESTO! ↓', canvas.width/2 - 110, groundY + 80);
                 
                 ctx.fillStyle = colors.yellow;
-                ctx.font = 'bold 50px Courier';
-                ctx.strokeText('TAP TO JUMP!', canvas.width/2 - 180, canvas.height/2);
-                ctx.fillText('TAP TO JUMP!', canvas.width/2 - 180, canvas.height/2);
+                ctx.font = 'bold 40px Courier';
+                ctx.strokeText('TAP PARA SALTAR!', canvas.width/2 - 170, canvas.height/2 - 50);
+                ctx.fillText('TAP PARA SALTAR!', canvas.width/2 - 170, canvas.height/2 - 50);
                 
                 ctx.globalAlpha = 1;
             }
         }
 
         function drawHUD() {
-            // Score panel (retro arcade style)
             ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-            ctx.fillRect(15, 15, 280, 120);
+            ctx.fillRect(15, 15, 200, 90);
             
             ctx.strokeStyle = colors.yellow;
-            ctx.lineWidth = 5;
-            ctx.strokeRect(15, 15, 280, 120);
+            ctx.lineWidth = 4;
+            ctx.strokeRect(15, 15, 200, 90);
             
-            ctx.font = 'bold 24px Courier';
+            ctx.font = 'bold 18px Courier';
             ctx.fillStyle = colors.yellow;
-            ctx.fillText('SCORE', 30, 50);
+            ctx.fillText('SCORE', 30, 42);
             
-            ctx.font = 'bold 56px Courier';
+            ctx.font = 'bold 42px Courier';
             ctx.fillStyle = colors.cyan;
-            ctx.fillText(score, 30, 105);
+            ctx.fillText(score, 30, 85);
             
-            // Lives (hearts)
-            ctx.font = '40px Arial';
+            ctx.font = '32px Arial';
             for (let i = 0; i < player.maxLives; i++) {
-                ctx.fillText(i < player.lives ? '❤️' : '🖤', 320 + i * 50, 60);
+                ctx.fillText(i < player.lives ? '❤️' : '🖤', 230 + i * 42, 50);
             }
             
-            // Combo
+            // ✅ POWER BAR (for shield and dash)
+            if (selectedChar.powerCooldown > 0) {
+                const barWidth = 150;
+                const barHeight = 12;
+                const barX = 15;
+                const barY = 115;
+                
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+                ctx.fillRect(barX, barY, barWidth, barHeight);
+                
+                const powerPercent = Math.min(1, player.powerCharge / selectedChar.powerCooldown);
+                
+                let barColor = selectedChar.color;
+                if (powerPercent >= 1 && !player.powerActive) {
+                    barColor = colors.yellow;
+                    if (frame % 20 < 10) barColor = colors.white;
+                }
+                
+                ctx.fillStyle = barColor;
+                ctx.fillRect(barX, barY, barWidth * powerPercent, barHeight);
+                
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 2;
+                ctx.strokeRect(barX, barY, barWidth, barHeight);
+                
+                ctx.font = 'bold 10px Courier';
+                ctx.fillStyle = colors.white;
+                let powerName = selectedChar.powerType === 'shield' ? 'SHIELD' : 'DASH';
+                ctx.fillText(powerName, barX + 5, barY + 10);
+            }
+            
             if (combo > 1) {
                 ctx.fillStyle = 'rgba(255, 215, 0, 0.9)';
-                ctx.fillRect(canvas.width - 180, 15, 165, 60);
+                ctx.fillRect(canvas.width - 140, 15, 125, 50);
                 ctx.strokeStyle = colors.pink;
                 ctx.lineWidth = 4;
-                ctx.strokeRect(canvas.width - 180, 15, 165, 60);
+                ctx.strokeRect(canvas.width - 140, 15, 125, 50);
                 
-                ctx.font = 'bold 20px Courier';
+                ctx.font = 'bold 16px Courier';
                 ctx.fillStyle = colors.black;
-                ctx.fillText('COMBO', canvas.width - 165, 40);
-                ctx.font = 'bold 32px Courier';
+                ctx.fillText('COMBO', canvas.width - 128, 35);
+                ctx.font = 'bold 26px Courier';
                 ctx.fillStyle = colors.pink;
-                ctx.fillText('x' + combo, canvas.width - 100, 62);
+                ctx.fillText('x' + combo, canvas.width - 88, 56);
             }
             
-            // Character name
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-            ctx.fillRect(15, canvas.height - 60, 220, 45);
-            ctx.strokeStyle = selectedChar.color;
-            ctx.lineWidth = 4;
-            ctx.strokeRect(15, canvas.height - 60, 220, 45);
+            if (player.chefMode > 0) {
+                ctx.fillStyle = 'rgba(255, 215, 0, 0.95)';
+                ctx.fillRect(15, canvas.height - 70, canvas.width - 30, 55);
+                ctx.strokeStyle = colors.orange;
+                ctx.lineWidth = 5;
+                ctx.strokeRect(15, canvas.height - 70, canvas.width - 30, 55);
+                
+                ctx.font = 'bold 32px Courier';
+                ctx.fillStyle = colors.orange;
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 4;
+                ctx.strokeText('✨ CHEF MODE! ✨', canvas.width/2 - 140, canvas.height - 35);
+                ctx.fillText('✨ CHEF MODE! ✨', canvas.width/2 - 140, canvas.height - 35);
+            }
             
-            ctx.font = 'bold 24px Courier';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            ctx.fillRect(15, canvas.height - 140, 160, 40);
+            ctx.strokeStyle = selectedChar.color;
+            ctx.lineWidth = 3;
+            ctx.strokeRect(15, canvas.height - 140, 160, 40);
+            
+            ctx.font = 'bold 18px Courier';
             ctx.fillStyle = selectedChar.color;
-            ctx.fillText(`CHEF ${selectedChar.name}`, 30, canvas.height - 28);
+            ctx.fillText(`CHEF ${selectedChar.name}`, 25, canvas.height - 113);
         }
 
-        // ═══════════════════════════════════════════════════════════════════
-        // GAME LOOP
-        // ═══════════════════════════════════════════════════════════════════
         function gameLoop() {
             if (!gameStarted || gameOver || paused) return;
             
