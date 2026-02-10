@@ -309,7 +309,7 @@
             opacity: 0.5;
         }
 
-        /* INTRO PERSONAJES */
+        /* ✅ INTRO PERSONAJES - ARREGLADO PARA MÓVIL */
         #introScreen {
             position: absolute;
             top: 0;
@@ -319,10 +319,11 @@
             background: linear-gradient(135deg, #000 0%, #1a1a2e 100%);
             display: none;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             z-index: 1998;
-            padding: 30px;
+            padding: 20px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         #introScreen.show {
@@ -330,19 +331,19 @@
         }
 
         .introTitle {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 900;
             color: #FFD700;
             text-shadow: 4px 4px 0 #000;
-            margin-bottom: 40px;
+            margin: 20px 0;
             text-align: center;
         }
 
         .introGrid {
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 15px;
+            margin-bottom: 25px;
             width: 100%;
             max-width: 380px;
         }
@@ -350,15 +351,32 @@
         .introCard {
             background: rgba(255, 255, 255, 0.1);
             border: 4px solid #FFD700;
-            border-radius: 20px;
-            padding: 20px;
+            border-radius: 15px;
+            padding: 15px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
+            animation: slideIn 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .introCard:nth-child(1) { animation-delay: 0.1s; }
+        .introCard:nth-child(2) { animation-delay: 0.3s; }
+        .introCard:nth-child(3) { animation-delay: 0.5s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .introEmoji {
-            font-size: 70px;
+            font-size: 55px;
             filter: drop-shadow(3px 3px 0 #000);
         }
 
@@ -367,35 +385,36 @@
         }
 
         .introName {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 900;
             color: #FFD700;
             text-shadow: 2px 2px 0 #000;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .introDesc {
-            font-size: 14px;
+            font-size: 12px;
             color: #FFF;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .skipBtn {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 900;
             color: #FFF;
-            background: #FF1493;
+            background: linear-gradient(180deg, #32CD32 0%, #228B22 100%);
             border: 4px solid #000;
-            padding: 12px 35px;
+            padding: 15px 45px;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 5px 5px 0 #000;
-            border-radius: 10px;
+            box-shadow: 6px 6px 0 #000;
+            border-radius: 12px;
+            margin: 20px 0 30px 0;
         }
 
         .skipBtn:active {
-            transform: translate(2px, 2px);
+            transform: translate(3px, 3px);
             box-shadow: 3px 3px 0 #000;
         }
 
@@ -591,6 +610,31 @@
             transform: translate(2px, 2px);
             box-shadow: 1px 1px 0 #000;
         }
+
+        /* ✅ INDICADOR DE PERSONAJE CERCA */
+        .char-alert {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 215, 0, 0.95);
+            border: 5px solid #000;
+            border-radius: 20px;
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: 900;
+            color: #000;
+            text-align: center;
+            box-shadow: 10px 10px 0 #000;
+            animation: alertPop 0.8s ease;
+            z-index: 1994;
+        }
+
+        @keyframes alertPop {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -632,7 +676,7 @@
             <button class="playBtn disabled" id="playBtn" onclick="showIntro()">¡JUGAR!</button>
         </div>
 
-        <!-- INTRO PERSONAJES -->
+        <!-- ✅ INTRO PERSONAJES - ARREGLADO -->
         <div id="introScreen">
             <div class="introTitle">¡CONOCÉ A LOS PERSONAJES!</div>
             <div class="introGrid">
@@ -640,21 +684,21 @@
                     <div class="introEmoji">👨‍🍳</div>
                     <div class="introInfo">
                         <div class="introName">EL CHEF POP</div>
-                        <div class="introDesc">El maestro. Te da PODER CHEF: x3 puntos + invencibilidad!</div>
+                        <div class="introDesc">Te da PODER CHEF: x3 puntos + invencibilidad!</div>
                     </div>
                 </div>
                 <div class="introCard">
                     <div class="introEmoji">📸</div>
                     <div class="introInfo">
                         <div class="introName">IVANCITO</div>
-                        <div class="introDesc">Fotógrafo fashion. Te saca 3 fotos "¡DIVINA!" = +450 puntos</div>
+                        <div class="introDesc">Fotógrafo fashion. Te saca 3 fotos "¡DIVINA!" = +450 pts</div>
                     </div>
                 </div>
                 <div class="introCard">
                     <div class="introEmoji">🎤</div>
                     <div class="introInfo">
                         <div class="introName">LUISITO</div>
-                        <div class="introDesc">Locutor! "¡ZARLANGAS MAÑANAS!" = Premios random + puntos</div>
+                        <div class="introDesc">Locutor! "¡ZARLANGAS MAÑANAS!" = Premios random</div>
                     </div>
                 </div>
             </div>
@@ -776,12 +820,13 @@
         let selectedChar = null;
 
         // ═══════════════════════════════════════════════════════════════════
-        // AUDIO
+        // ✅ AUDIO MEJORADO
         // ═══════════════════════════════════════════════════════════════════
         let audioEnabled = true;
         let audioContext = null;
         let bgmPlaying = false;
         let bossMusicPlaying = false;
+        let introMusicPlaying = false;
 
         function initAudio() {
             if (!audioContext) {
@@ -789,7 +834,7 @@
             }
         }
 
-        function playNote(freq, duration, type = 'square', volume = 0.25) {
+        function playNote(freq, duration, type = 'square', volume = 0.2) {
             if (!audioEnabled || !audioContext) return;
             
             const osc = audioContext.createOscillator();
@@ -806,6 +851,34 @@
             
             osc.start(audioContext.currentTime);
             osc.stop(audioContext.currentTime + duration);
+        }
+
+        // ✅ MÚSICA INTRO - Épica y misteriosa
+        function playIntroMusic() {
+            if (!audioEnabled || introMusicPlaying) return;
+            introMusicPlaying = true;
+            
+            const introMelody = [
+                {note: 261.63, duration: 0.4}, // C
+                {note: 293.66, duration: 0.4}, // D
+                {note: 329.63, duration: 0.4}, // E
+                {note: 392.00, duration: 0.6}, // G
+                {note: 329.63, duration: 0.4}, // E
+                {note: 392.00, duration: 0.8}, // G
+            ];
+            
+            let time = 0;
+            introMelody.forEach(({note, duration}) => {
+                setTimeout(() => {
+                    playNote(note, duration, 'sine', 0.15);
+                    playNote(note/2, duration, 'triangle', 0.1);
+                }, time * 1000);
+                time += duration;
+            });
+            
+            setTimeout(() => {
+                introMusicPlaying = false;
+            }, (time + 0.3) * 1000);
         }
 
         function playBGM() {
@@ -826,8 +899,8 @@
             let time = 0;
             melody.forEach(({note, duration}) => {
                 setTimeout(() => {
-                    playNote(note, duration, 'square', 0.15);
-                    playNote(note/2, duration, 'triangle', 0.08);
+                    playNote(note, duration, 'square', 0.12);
+                    playNote(note/2, duration, 'triangle', 0.06);
                 }, time * 1000);
                 time += duration;
             });
@@ -855,8 +928,8 @@
             let time = 0;
             bossMelody.forEach(({note, duration}) => {
                 setTimeout(() => {
-                    playNote(note, duration, 'sawtooth', 0.2);
-                    playNote(note/2, duration, 'square', 0.12);
+                    playNote(note, duration, 'sawtooth', 0.15);
+                    playNote(note/2, duration, 'square', 0.08);
                 }, time * 1000);
                 time += duration;
             });
@@ -869,64 +942,68 @@
 
         const sounds = {
             jump: () => { 
-                playNote(500, 0.08, 'sine', 0.3); 
-                setTimeout(() => playNote(650, 0.08, 'sine', 0.25), 40);
-                playNote(200, 0.06, 'sawtooth', 0.15);
+                playNote(500, 0.08, 'sine', 0.25); 
+                setTimeout(() => playNote(650, 0.08, 'sine', 0.2), 40);
+                playNote(200, 0.06, 'sawtooth', 0.12);
             },
             doubleJump: () => {
-                playNote(700, 0.08, 'sine', 0.3); 
-                setTimeout(() => playNote(900, 0.08, 'sine', 0.25), 40);
+                playNote(700, 0.08, 'sine', 0.25); 
+                setTimeout(() => playNote(900, 0.08, 'sine', 0.2), 40);
             },
             collect: () => { 
-                playNote(900, 0.1, 'square', 0.3); 
-                setTimeout(() => playNote(1200, 0.12, 'square', 0.3), 50);
-                setTimeout(() => playNote(1500, 0.08, 'sine', 0.2), 100);
+                playNote(900, 0.1, 'square', 0.25); 
+                setTimeout(() => playNote(1200, 0.12, 'square', 0.25), 50);
+                setTimeout(() => playNote(1500, 0.08, 'sine', 0.18), 100);
             },
             hit: () => { 
-                playNote(120, 0.3, 'sawtooth', 0.4); 
-                playNote(100, 0.35, 'sawtooth', 0.3);
-                setTimeout(() => playNote(80, 0.2, 'sawtooth', 0.25), 100);
+                playNote(120, 0.3, 'sawtooth', 0.3); 
+                playNote(100, 0.35, 'sawtooth', 0.25);
+                setTimeout(() => playNote(80, 0.2, 'sawtooth', 0.2), 100);
             },
             powerup: () => {
                 const notes = [523.25, 659.25, 783.99, 1046.5];
                 notes.forEach((note, i) => {
-                    setTimeout(() => playNote(note, 0.12, 'sine', 0.25), i * 60);
+                    setTimeout(() => playNote(note, 0.12, 'sine', 0.2), i * 60);
                 });
             },
             powerReady: () => {
-                playNote(880, 0.08, 'sine', 0.2);
-                setTimeout(() => playNote(1100, 0.08, 'sine', 0.2), 50);
+                playNote(880, 0.08, 'sine', 0.18);
+                setTimeout(() => playNote(1100, 0.08, 'sine', 0.18), 50);
             },
             dash: () => {
                 for (let i = 0; i < 5; i++) {
-                    setTimeout(() => playNote(800 + i * 200, 0.04, 'square', 0.15), i * 30);
+                    setTimeout(() => playNote(800 + i * 200, 0.04, 'square', 0.12), i * 30);
                 }
             },
             groundPound: () => {
-                playNote(150, 0.2, 'sawtooth', 0.35);
-                setTimeout(() => playNote(100, 0.3, 'sawtooth', 0.35), 100);
+                playNote(150, 0.2, 'sawtooth', 0.28);
+                setTimeout(() => playNote(100, 0.3, 'sawtooth', 0.28), 100);
             },
             shield: () => {
-                playNote(600, 0.15, 'sine', 0.25);
-                setTimeout(() => playNote(800, 0.15, 'sine', 0.25), 100);
+                playNote(600, 0.15, 'sine', 0.2);
+                setTimeout(() => playNote(800, 0.15, 'sine', 0.2), 100);
             },
             bossHit: () => {
-                playNote(200, 0.15, 'sawtooth', 0.4);
-                setTimeout(() => playNote(150, 0.2, 'sawtooth', 0.35), 80);
+                playNote(200, 0.15, 'sawtooth', 0.32);
+                setTimeout(() => playNote(150, 0.2, 'sawtooth', 0.28), 80);
             },
             bossDefeat: () => {
                 for (let i = 0; i < 8; i++) {
-                    setTimeout(() => playNote(1200 - i * 150, 0.1, 'square', 0.25), i * 100);
+                    setTimeout(() => playNote(1200 - i * 150, 0.1, 'square', 0.2), i * 100);
                 }
             },
             shop: () => {
-                playNote(600, 0.1, 'sine', 0.2);
-                setTimeout(() => playNote(800, 0.1, 'sine', 0.2), 80);
-                setTimeout(() => playNote(1000, 0.15, 'sine', 0.25), 160);
+                playNote(600, 0.1, 'sine', 0.18);
+                setTimeout(() => playNote(800, 0.1, 'sine', 0.18), 80);
+                setTimeout(() => playNote(1000, 0.15, 'sine', 0.2), 160);
             },
             mission: () => {
-                playNote(1000, 0.15, 'square', 0.25);
-                setTimeout(() => playNote(1200, 0.15, 'square', 0.25), 100);
+                playNote(1000, 0.15, 'square', 0.2);
+                setTimeout(() => playNote(1200, 0.15, 'square', 0.2), 100);
+            },
+            charAlert: () => {
+                playNote(1500, 0.1, 'sine', 0.22);
+                setTimeout(() => playNote(1800, 0.1, 'sine', 0.22), 80);
             }
         };
 
@@ -948,7 +1025,7 @@
         let score = 0;
         let highScore = localStorage.getItem('wonderPopHighScore') || 0;
         let frame = 0;
-        let gameSpeed = 0.7; // ✅ VELOCIDAD INICIAL MÁS LENTA
+        let gameSpeed = 0.7;
         let combo = 0;
         let comboTimer = 0;
 
@@ -1015,6 +1092,9 @@
         let currentMission = 0;
         let allMissionsComplete = false;
 
+        // ✅ ALERTS
+        let charAlert = null;
+
         function showCharacterSelect() {
             document.getElementById('splashScreen').classList.add('hidden');
             setTimeout(() => {
@@ -1036,14 +1116,15 @@
         function showIntro() {
             if (selectedCharIndex === -1) return;
             
+            initAudio();
+            playIntroMusic();
+            
             document.getElementById('characterScreen').classList.remove('show');
             document.getElementById('introScreen').classList.add('show');
         }
 
         function startGameWithChar() {
             if (selectedCharIndex === -1) return;
-            
-            initAudio();
             
             document.getElementById('introScreen').classList.remove('show');
             document.getElementById('controls').style.display = 'flex';
@@ -1055,6 +1136,7 @@
                 player.canDoubleJump = true;
             }
             
+            introMusicPlaying = false;
             gameStarted = true;
             playBGM();
             initGame();
@@ -1282,6 +1364,9 @@
             else if (rand < weights[0] + weights[1]) type = 'ivancito';
             else type = 'luisito';
             
+            // ✅ ALERT cuando aparece personaje
+            showCharAlert(type);
+            
             if (type === 'chef') {
                 specialChars.push({
                     type: 'chef',
@@ -1316,7 +1401,23 @@
             }
         }
 
-        // ✅ SPAWN BOSS - ARREGLADO
+        // ✅ MOSTRAR ALERTA DE PERSONAJE
+        function showCharAlert(type) {
+            const names = {
+                'chef': '¡EL CHEF APARECIÓ! →',
+                'ivancito': '¡IVANCITO ESTÁ AQUÍ! →',
+                'luisito': '¡LUISITO LLEGÓ! →'
+            };
+            
+            charAlert = {
+                text: names[type],
+                life: 90,
+                y: 250
+            };
+            
+            sounds.charAlert();
+        }
+
         function spawnBoss() {
             if (bossSpawned || !allMissionsComplete) return;
             
@@ -1355,10 +1456,8 @@
             
             frame++;
             
-            // ✅ CHECK MISSIONS
             checkMissions();
             
-            // ✅ Spawn boss cuando todas las misiones estén completas
             if (allMissionsComplete && !bossSpawned) {
                 spawnBoss();
             }
@@ -1463,6 +1562,12 @@
             if (showTutorial && frame > 300) {
                 tutorialAlpha -= 0.01;
                 if (tutorialAlpha <= 0) showTutorial = false;
+            }
+            
+            // ✅ Update char alert
+            if (charAlert) {
+                charAlert.life--;
+                if (charAlert.life <= 0) charAlert = null;
             }
             
             buildings.forEach(b => {
@@ -1636,13 +1741,11 @@
                 if (ft.life <= 0) floatingTexts.splice(index, 1);
             });
             
-            // ✅ VELOCIDAD SUBE CADA 20 SEGUNDOS (no 10)
             if (frame % 1200 === 0 && gameSpeed < 2.5 && !boss) {
-                gameSpeed += 0.1; // Sube más lento
+                gameSpeed += 0.1;
             }
         }
 
-        // ✅ CHECK MISSIONS
         function checkMissions() {
             missions.forEach(mission => {
                 if (mission.complete) return;
@@ -1655,7 +1758,6 @@
                 }
             });
             
-            // Check if all complete
             const allComplete = missions.every(m => m.complete);
             if (allComplete && !allMissionsComplete) {
                 allMissionsComplete = true;
@@ -1669,9 +1771,22 @@
             mission.complete = true;
             currentMission = Math.min(currentMission + 1, missions.length - 1);
             sounds.mission();
+            
+            // ✅ Efecto visual cuando completás misión
+            screenShake = 20;
             createFloatingText(canvas.width/2 - 160, 250, '¡MISIÓN COMPLETA!', colors.yellow, 3500, 52);
-            screenShake = 15;
-            createExplosion(canvas.width/2, 280, colors.yellow, 30);
+            
+            for (let i = 0; i < 30; i++) {
+                particles.push({
+                    x: canvas.width/2,
+                    y: 280,
+                    vx: (Math.random() - 0.5) * 12,
+                    vy: (Math.random() - 0.5) * 12,
+                    size: 4 + Math.random() * 6,
+                    color: [colors.yellow, colors.lime, colors.cyan][Math.floor(Math.random() * 3)],
+                    life: 60
+                });
+            }
         }
 
         function updateBoss() {
@@ -1857,7 +1972,6 @@
             points *= combo;
             score += points;
             
-            // ✅ MISSION PROGRESS
             const mission1 = missions.find(m => m.id === 1);
             if (mission1 && !mission1.complete) {
                 mission1.progress++;
@@ -1883,7 +1997,6 @@
             createFloatingText(canvas.width/2 - 160, 200, '¡COCINA POP POWER!', colors.yellow, 4000, 52);
             createExplosion(player.x + player.width/2, player.y + player.height/2, colors.yellow, 30);
             
-            // ✅ MISSION PROGRESS
             const mission4 = missions.find(m => m.id === 4);
             if (mission4 && !mission4.complete) {
                 mission4.progress = 1;
@@ -1897,12 +2010,10 @@
             sounds.powerup();
             score += 150;
             
-            // ✅ TEXTOS MÁS GRANDES Y DURADEROS
             createFloatingText(ivancito.x - 30, ivancito.y - 50, '¡DIVINA!', colors.pink, 3500, 56);
             createFloatingText(ivancito.x + 30, ivancito.y - 90, '+150', colors.yellow, 3000, 48);
             createExplosion(ivancito.x, ivancito.y, colors.pink, 15);
             
-            // ✅ MISSION PROGRESS
             const mission2 = missions.find(m => m.id === 2);
             if (mission2 && !mission2.complete && ivancito.photosTaken === 2) {
                 mission2.progress = 1;
@@ -1913,11 +2024,9 @@
         function activateLuisito(luisito) {
             sounds.powerup();
             
-            // ✅ TEXTOS MÁS GRANDES Y DURADEROS
             createFloatingText(luisito.x - 50, luisito.y - 60, '¡ZARLANGAS', colors.cyan, 4000, 58);
             createFloatingText(luisito.x - 30, luisito.y - 100, 'MAÑANAS!', colors.cyan, 4000, 58);
             
-            // ✅ MISSION PROGRESS
             const mission3 = missions.find(m => m.id === 3);
             if (mission3 && !mission3.complete) {
                 mission3.progress = 1;
@@ -1991,7 +2100,6 @@
             }
         }
 
-        // ✅ TEXTOS MEJORADOS: Duración y tamaño ajustables
         function createFloatingText(x, y, text, color, duration = 2000, fontSize = 48) {
             floatingTexts.push({
                 x: x,
@@ -1999,7 +2107,7 @@
                 vy: -1.2,
                 text: text,
                 color: color,
-                life: Math.floor(duration / 16.67), // Convert ms to frames
+                life: Math.floor(duration / 16.67),
                 fontSize: fontSize,
                 scale: 1,
                 scaleDir: 1
@@ -2157,7 +2265,6 @@
                 ctx.fillText('EL CHEF', sc.x - 10, floatY - 30);
                 
             } else if (sc.type === 'ivancito') {
-                // ✅ IVANCITO REDISEÑADO - Más bonito
                 ctx.fillStyle = colors.pink;
                 ctx.fillRect(sc.x + 5, sc.y + 25, sc.width - 10, sc.height - 25);
                 
@@ -2165,21 +2272,17 @@
                 ctx.lineWidth = 3;
                 ctx.strokeRect(sc.x + 5, sc.y + 25, sc.width - 10, sc.height - 25);
                 
-                // Cara
                 ctx.fillStyle = '#FFD9B3';
                 ctx.fillRect(sc.x + 10, sc.y + 10, 30, 25);
                 
-                // Ojos
                 ctx.fillStyle = colors.black;
                 ctx.fillRect(sc.x + 14, sc.y + 17, 6, 6);
                 ctx.fillRect(sc.x + 28, sc.y + 17, 6, 6);
                 
-                // Sonrisa
                 ctx.fillRect(sc.x + 18, sc.y + 27, 14, 2);
                 ctx.fillRect(sc.x + 16, sc.y + 26, 2, 2);
                 ctx.fillRect(sc.x + 32, sc.y + 26, 2, 2);
                 
-                // ✅ CÁMARA VISIBLE
                 ctx.fillStyle = colors.black;
                 ctx.fillRect(sc.x + 12, sc.y + 40, 26, 18);
                 ctx.fillStyle = colors.white;
@@ -2187,7 +2290,6 @@
                 ctx.fillStyle = colors.blue;
                 ctx.fillRect(sc.x + 22, sc.y + 47, 6, 4);
                 
-                // Flash
                 if (sc.photoTimer > 25) {
                     ctx.fillStyle = 'rgba(255, 255, 0, 0.6)';
                     ctx.fillRect(sc.x - 10, sc.y - 10, sc.width + 20, sc.height + 20);
@@ -2490,9 +2592,7 @@
                 ctx.globalAlpha = 1;
             });
             
-            // ✅ TEXTOS FLOTANTES MEJORADOS
             floatingTexts.forEach(ft => {
-                // Pulse effect for emphasis
                 ft.scale += ft.scaleDir * 0.02;
                 if (ft.scale > 1.15 || ft.scale < 0.95) ft.scaleDir *= -1;
                 
@@ -2514,102 +2614,78 @@
             
             ctx.restore();
             
-            drawHUD();
-            
-            // ✅ MISSION HUD
-            if (!boss) {
-                const currentM = missions[currentMission];
-                if (currentM && !currentM.complete) {
-                    ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-                    ctx.fillRect(15, 115, canvas.width - 30, 60);
-                    
-                    ctx.strokeStyle = colors.cyan;
-                    ctx.lineWidth = 4;
-                    ctx.strokeRect(15, 115, canvas.width - 30, 60);
-                    
-                    ctx.font = 'bold 14px Courier';
-                    ctx.fillStyle = colors.cyan;
-                    ctx.fillText('MISIÓN ACTUAL:', 25, 137);
-                    
-                    ctx.font = 'bold 20px Courier';
-                    ctx.fillStyle = colors.white;
-                    ctx.fillText(currentM.desc, 25, 161);
-                    
-                    // Progress bar
-                    if (currentM.type !== 'ivancito' && currentM.type !== 'luisito' && currentM.type !== 'chef') {
-                        const barWidth = canvas.width - 70;
-                        const barX = 25;
-                        const barY = 145;
-                        const progress = Math.min(1, currentM.progress / currentM.target);
-                        
-                        ctx.fillStyle = colors.yellow;
-                        ctx.fillRect(barX + 200, barY, barWidth - 200, 8);
-                        
-                        ctx.strokeStyle = colors.black;
-                        ctx.lineWidth = 2;
-                        ctx.strokeRect(barX + 200, barY, barWidth - 200, 8);
-                        
-                        ctx.fillStyle = colors.lime;
-                        ctx.fillRect(barX + 200, barY, (barWidth - 200) * progress, 8);
-                        
-                        ctx.font = 'bold 12px Courier';
-                        ctx.fillStyle = colors.yellow;
-                        ctx.fillText(`${currentM.progress}/${currentM.target}`, barX + barWidth - 40, barY + 7);
-                    }
-                }
+            // ✅ CHAR ALERT
+            if (charAlert) {
+                const alpha = Math.min(1, charAlert.life / 30);
+                ctx.globalAlpha = alpha;
+                
+                ctx.fillStyle = 'rgba(255, 215, 0, 0.95)';
+                const padding = 20;
+                const textWidth = ctx.measureText(charAlert.text).width + padding * 2;
+                const alertX = canvas.width - textWidth - 20;
+                const alertY = charAlert.y;
+                
+                ctx.fillRect(alertX, alertY, textWidth, 50);
+                
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 4;
+                ctx.strokeRect(alertX, alertY, textWidth, 50);
+                
+                ctx.font = 'bold 20px Courier';
+                ctx.fillStyle = colors.black;
+                ctx.fillText(charAlert.text, alertX + padding, alertY + 32);
+                
+                ctx.globalAlpha = 1;
             }
             
+            drawHUD();
+            
+            // ✅ TUTORIAL MÁS COMPACTO
             if (showTutorial) {
                 ctx.globalAlpha = tutorialAlpha;
                 
-                ctx.fillStyle = colors.lime;
-                ctx.font = 'bold 28px Courier';
-                ctx.strokeStyle = colors.black;
-                ctx.lineWidth = 5;
-                ctx.strokeText('AGARRÁ ESTO! ↑', canvas.width/2 - 120, 200);
-                ctx.fillText('AGARRÁ ESTO! ↑', canvas.width/2 - 120, 200);
-                
-                ctx.fillStyle = colors.red;
-                ctx.strokeText('EVITÁ ESTO! ↓', canvas.width/2 - 110, groundY + 80);
-                ctx.fillText('EVITÁ ESTO! ↓', canvas.width/2 - 110, groundY + 80);
-                
                 ctx.fillStyle = colors.yellow;
-                ctx.font = 'bold 36px Courier';
-                ctx.strokeText('TAP PARA SALTAR!', canvas.width/2 - 150, canvas.height/2 - 50);
-                ctx.fillText('TAP PARA SALTAR!', canvas.width/2 - 150, canvas.height/2 - 50);
+                ctx.font = 'bold 32px Courier';
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 4;
+                ctx.textAlign = 'center';
+                ctx.strokeText('TAP = SALTAR!', canvas.width/2, canvas.height/2);
+                ctx.fillText('TAP = SALTAR!', canvas.width/2, canvas.height/2);
+                ctx.textAlign = 'left';
                 
                 ctx.globalAlpha = 1;
             }
         }
 
         function drawHUD() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
-            ctx.fillRect(15, 15, 200, 90);
+            // ✅ HUD COMPACTO PARA MÓVIL
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+            ctx.fillRect(15, 15, 170, 70);
             
             ctx.strokeStyle = colors.yellow;
-            ctx.lineWidth = 4;
-            ctx.strokeRect(15, 15, 200, 90);
+            ctx.lineWidth = 3;
+            ctx.strokeRect(15, 15, 170, 70);
             
-            ctx.font = 'bold 18px Courier';
+            ctx.font = 'bold 14px Courier';
             ctx.fillStyle = colors.yellow;
-            ctx.fillText('SCORE', 30, 42);
+            ctx.fillText('SCORE', 25, 35);
             
-            ctx.font = 'bold 42px Courier';
+            ctx.font = 'bold 32px Courier';
             ctx.fillStyle = colors.cyan;
-            ctx.fillText(score, 30, 85);
+            ctx.fillText(score, 25, 68);
             
-            ctx.font = '32px Arial';
+            ctx.font = '28px Arial';
             for (let i = 0; i < player.maxLives; i++) {
-                ctx.fillText(i < player.lives ? '❤️' : '🖤', 230 + i * 42, 50);
+                ctx.fillText(i < player.lives ? '❤️' : '🖤', 200 + i * 38, 45);
             }
             
             if (selectedChar.powerCooldown > 0) {
-                const barWidth = 150;
-                const barHeight = 12;
-                const barX = 230;
-                const barY = 75;
+                const barWidth = 130;
+                const barHeight = 10;
+                const barX = 200;
+                const barY = 65;
                 
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
                 ctx.fillRect(barX, barY, barWidth, barHeight);
                 
                 const powerPercent = Math.min(1, player.powerCharge / selectedChar.powerCooldown);
@@ -2626,52 +2702,80 @@
                 ctx.strokeStyle = colors.black;
                 ctx.lineWidth = 2;
                 ctx.strokeRect(barX, barY, barWidth, barHeight);
-                
-                ctx.font = 'bold 10px Courier';
-                ctx.fillStyle = colors.white;
-                let powerName = selectedChar.powerType === 'shield' ? 'SHIELD' : 'DASH';
-                ctx.fillText(powerName, barX + 5, barY + 10);
             }
             
             if (combo > 1) {
                 ctx.fillStyle = 'rgba(255, 215, 0, 0.9)';
-                ctx.fillRect(canvas.width - 140, 15, 125, 50);
+                ctx.fillRect(canvas.width - 110, 15, 95, 40);
                 ctx.strokeStyle = colors.pink;
-                ctx.lineWidth = 4;
-                ctx.strokeRect(canvas.width - 140, 15, 125, 50);
+                ctx.lineWidth = 3;
+                ctx.strokeRect(canvas.width - 110, 15, 95, 40);
                 
-                ctx.font = 'bold 16px Courier';
+                ctx.font = 'bold 13px Courier';
                 ctx.fillStyle = colors.black;
-                ctx.fillText('COMBO', canvas.width - 128, 35);
-                ctx.font = 'bold 26px Courier';
+                ctx.fillText('COMBO', canvas.width - 100, 32);
+                ctx.font = 'bold 22px Courier';
                 ctx.fillStyle = colors.pink;
-                ctx.fillText('x' + combo, canvas.width - 88, 56);
+                ctx.fillText('x' + combo, canvas.width - 70, 50);
             }
             
             if (player.chefMode > 0) {
-                ctx.fillStyle = 'rgba(255, 215, 0, 0.95)';
-                ctx.fillRect(15, canvas.height - 70, canvas.width - 30, 55);
+                ctx.fillStyle = 'rgba(255, 215, 0, 0.9)';
+                ctx.fillRect(15, canvas.height - 60, canvas.width - 30, 45);
                 ctx.strokeStyle = colors.orange;
-                ctx.lineWidth = 5;
-                ctx.strokeRect(15, canvas.height - 70, canvas.width - 30, 55);
+                ctx.lineWidth = 4;
+                ctx.strokeRect(15, canvas.height - 60, canvas.width - 30, 45);
                 
-                ctx.font = 'bold 32px Courier';
+                ctx.font = 'bold 26px Courier';
                 ctx.fillStyle = colors.orange;
                 ctx.strokeStyle = colors.black;
                 ctx.lineWidth = 4;
-                ctx.strokeText('✨ CHEF MODE! ✨', canvas.width/2 - 140, canvas.height - 35);
-                ctx.fillText('✨ CHEF MODE! ✨', canvas.width/2 - 140, canvas.height - 35);
+                ctx.textAlign = 'center';
+                ctx.strokeText('✨ CHEF MODE! ✨', canvas.width/2, canvas.height - 28);
+                ctx.fillText('✨ CHEF MODE! ✨', canvas.width/2, canvas.height - 28);
+                ctx.textAlign = 'left';
             }
             
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-            ctx.fillRect(15, canvas.height - 140, 160, 40);
-            ctx.strokeStyle = selectedChar.color;
-            ctx.lineWidth = 3;
-            ctx.strokeRect(15, canvas.height - 140, 160, 40);
-            
-            ctx.font = 'bold 18px Courier';
-            ctx.fillStyle = selectedChar.color;
-            ctx.fillText(`CHEF ${selectedChar.name}`, 25, canvas.height - 113);
+            if (!boss) {
+                const currentM = missions[currentMission];
+                if (currentM && !currentM.complete) {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+                    ctx.fillRect(15, 95, canvas.width - 30, 50);
+                    
+                    ctx.strokeStyle = colors.cyan;
+                    ctx.lineWidth = 3;
+                    ctx.strokeRect(15, 95, canvas.width - 30, 50);
+                    
+                    ctx.font = 'bold 11px Courier';
+                    ctx.fillStyle = colors.cyan;
+                    ctx.fillText('MISIÓN:', 25, 112);
+                    
+                    ctx.font = 'bold 16px Courier';
+                    ctx.fillStyle = colors.white;
+                    ctx.fillText(currentM.desc, 25, 133);
+                    
+                    if (currentM.type !== 'ivancito' && currentM.type !== 'luisito' && currentM.type !== 'chef') {
+                        const barWidth = canvas.width - 90;
+                        const barX = 25;
+                        const barY = 115;
+                        const progress = Math.min(1, currentM.progress / currentM.target);
+                        
+                        ctx.fillStyle = colors.yellow;
+                        ctx.fillRect(barX + 135, barY, barWidth - 135, 6);
+                        
+                        ctx.strokeStyle = colors.black;
+                        ctx.lineWidth = 2;
+                        ctx.strokeRect(barX + 135, barY, barWidth - 135, 6);
+                        
+                        ctx.fillStyle = colors.lime;
+                        ctx.fillRect(barX + 135, barY, (barWidth - 135) * progress, 6);
+                        
+                        ctx.font = 'bold 10px Courier';
+                        ctx.fillStyle = colors.yellow;
+                        ctx.fillText(`${currentM.progress}/${currentM.target}`, barX + barWidth - 35, barY + 5);
+                    }
+                }
+            }
         }
 
         function gameLoop() {
