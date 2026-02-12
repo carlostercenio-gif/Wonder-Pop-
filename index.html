@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>WONDER POP V7 ULTIMATE - La Aventura Definitiva</title>
+    <title>WONDER POP V7 ULTIMATE - MEJORADO</title>
     <style>
         * {
             margin: 0;
@@ -309,7 +309,6 @@
             opacity: 0.5;
         }
 
-        /* ✅ INTRO PERSONAJES - ARREGLADO PARA MÓVIL */
         #introScreen {
             position: absolute;
             top: 0;
@@ -319,11 +318,10 @@
             background: linear-gradient(135deg, #000 0%, #1a1a2e 100%);
             display: none;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
             z-index: 1998;
-            padding: 20px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
+            padding: 30px;
         }
 
         #introScreen.show {
@@ -331,19 +329,19 @@
         }
 
         .introTitle {
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 900;
             color: #FFD700;
             text-shadow: 4px 4px 0 #000;
-            margin: 20px 0;
+            margin-bottom: 40px;
             text-align: center;
         }
 
         .introGrid {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 30px;
+            margin-bottom: 40px;
             width: 100%;
             max-width: 380px;
         }
@@ -351,32 +349,15 @@
         .introCard {
             background: rgba(255, 255, 255, 0.1);
             border: 4px solid #FFD700;
-            border-radius: 15px;
-            padding: 15px;
+            border-radius: 20px;
+            padding: 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            animation: slideIn 0.5s ease forwards;
-            opacity: 0;
-        }
-
-        .introCard:nth-child(1) { animation-delay: 0.1s; }
-        .introCard:nth-child(2) { animation-delay: 0.3s; }
-        .introCard:nth-child(3) { animation-delay: 0.5s; }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            gap: 20px;
         }
 
         .introEmoji {
-            font-size: 55px;
+            font-size: 70px;
             filter: drop-shadow(3px 3px 0 #000);
         }
 
@@ -385,36 +366,35 @@
         }
 
         .introName {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 900;
             color: #FFD700;
             text-shadow: 2px 2px 0 #000;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .introDesc {
-            font-size: 12px;
+            font-size: 14px;
             color: #FFF;
-            line-height: 1.3;
+            line-height: 1.4;
         }
 
         .skipBtn {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 900;
             color: #FFF;
-            background: linear-gradient(180deg, #32CD32 0%, #228B22 100%);
+            background: #FF1493;
             border: 4px solid #000;
-            padding: 15px 45px;
+            padding: 12px 35px;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 6px 6px 0 #000;
-            border-radius: 12px;
-            margin: 20px 0 30px 0;
+            box-shadow: 5px 5px 0 #000;
+            border-radius: 10px;
         }
 
         .skipBtn:active {
-            transform: translate(3px, 3px);
+            transform: translate(2px, 2px);
             box-shadow: 3px 3px 0 #000;
         }
 
@@ -517,6 +497,31 @@
             box-shadow: 3px 3px 0 #000;
         }
 
+        #controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 1995;
+        }
+
+        .controlBtn {
+            font-size: 22px;
+            background: rgba(255, 215, 0, 0.95);
+            border: 3px solid #000;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 10px;
+            font-weight: 900;
+            box-shadow: 3px 3px 0 #000;
+        }
+
+        .controlBtn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 #000;
+        }
+
         #gameOverScreen {
             position: absolute;
             top: 0;
@@ -586,54 +591,108 @@
             box-shadow: 4px 4px 0 #000;
         }
 
-        #controls {
+        #victoryScreen {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FF1493 50%, #8B00FF 75%, #00FFFF 100%);
+            background-size: 400% 400%;
+            animation: rainbowShift 3s ease infinite;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2001;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        #victoryScreen.show {
             display: flex;
-            gap: 10px;
-            z-index: 1995;
         }
 
-        .controlBtn {
-            font-size: 22px;
-            background: rgba(255, 215, 0, 0.95);
-            border: 3px solid #000;
-            padding: 8px 12px;
-            cursor: pointer;
-            border-radius: 10px;
+        .victoryTitle {
+            font-size: 56px;
             font-weight: 900;
-            box-shadow: 3px 3px 0 #000;
+            color: #FFF;
+            text-shadow: 
+                5px 5px 0 #000,
+                -3px -3px 0 #FFD700,
+                7px 7px 0 #FF1493;
+            margin-bottom: 20px;
+            animation: megaPop 0.8s ease infinite alternate;
+            text-align: center;
         }
 
-        .controlBtn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0 #000;
-        }
-
-        /* ✅ INDICADOR DE PERSONAJE CERCA */
-        .char-alert {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 215, 0, 0.95);
-            border: 5px solid #000;
+        .victorySubtitle {
+            font-size: 28px;
+            color: #000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 30px;
             border-radius: 20px;
-            padding: 20px 40px;
-            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            border: 4px solid #000;
+            box-shadow: 5px 5px 0 #000;
+        }
+
+        .victoryStats {
+            background: rgba(0, 0, 0, 0.9);
+            border: 5px solid #FFD700;
+            border-radius: 20px;
+            padding: 25px 35px;
+            margin-bottom: 25px;
+            min-width: 320px;
+        }
+
+        .victoryStat {
+            font-size: 22px;
+            color: #FFF;
+            margin: 12px 0;
+            font-weight: 900;
+            text-shadow: 2px 2px 0 #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .statLabel {
+            color: #FFD700;
+        }
+
+        .statValue {
+            color: #00FFFF;
+            font-size: 26px;
+        }
+
+        .victoryBtn {
+            font-size: 22px;
             font-weight: 900;
             color: #000;
-            text-align: center;
-            box-shadow: 10px 10px 0 #000;
-            animation: alertPop 0.8s ease;
-            z-index: 1994;
+            background: linear-gradient(180deg, #FFD700 0%, #FFA500 100%);
+            border: 5px solid #000;
+            padding: 18px 45px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 8px 8px 0 #000;
+            transition: all 0.1s;
+            border-radius: 12px;
+            margin: 10px;
+            animation: megaPulse 1.5s ease infinite;
         }
 
-        @keyframes alertPop {
-            0% { transform: translate(-50%, -50%) scale(0); }
-            50% { transform: translate(-50%, -50%) scale(1.2); }
-            100% { transform: translate(-50%, -50%) scale(1); }
+        .victoryBtn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .victoryBtn.hard {
+            background: linear-gradient(180deg, #FF1493 0%, #8B00FF 100%);
+            color: #FFF;
+            border-color: #FFF;
         }
     </style>
 </head>
@@ -641,12 +700,12 @@
     <div id="gameContainer">
         <div id="splashScreen">
             <div class="title">WONDER POP</div>
-            <div class="subtitle">🎮 V7 ULTIMATE 🎮</div>
-            <div class="newLabel">⚡ NUEVO: MISIONES + BOSS! ⚡</div>
+            <div class="subtitle">🎮 V7 MEJORADO 🎮</div>
+            <div class="newLabel">⚡ BUGS ARREGLADOS! ⚡</div>
             <div class="location">📍 Delivery desde San Justo 🇦🇷</div>
             <div class="characters">🥑🍅🥕🍆</div>
             <button class="startBtn" onclick="showCharacterSelect()">PRESS START</button>
-            <div class="credits">© COCINA POP STUDIOS 2026</div>
+            <div class="credits">© COCINA POP STUDIOS 2026 - FIXED</div>
         </div>
 
         <div id="characterScreen">
@@ -676,7 +735,6 @@
             <button class="playBtn disabled" id="playBtn" onclick="showIntro()">¡JUGAR!</button>
         </div>
 
-        <!-- ✅ INTRO PERSONAJES - ARREGLADO -->
         <div id="introScreen">
             <div class="introTitle">¡CONOCÉ A LOS PERSONAJES!</div>
             <div class="introGrid">
@@ -684,21 +742,21 @@
                     <div class="introEmoji">👨‍🍳</div>
                     <div class="introInfo">
                         <div class="introName">EL CHEF POP</div>
-                        <div class="introDesc">Te da PODER CHEF: x3 puntos + invencibilidad!</div>
+                        <div class="introDesc">El maestro. Te da PODER CHEF: x3 puntos + invencibilidad!</div>
                     </div>
                 </div>
                 <div class="introCard">
                     <div class="introEmoji">📸</div>
                     <div class="introInfo">
                         <div class="introName">IVANCITO</div>
-                        <div class="introDesc">Fotógrafo fashion. Te saca 3 fotos "¡DIVINA!" = +450 pts</div>
+                        <div class="introDesc">Fotógrafo fashion. Te saca 3 fotos "¡DIVINA!" = +450 puntos</div>
                     </div>
                 </div>
                 <div class="introCard">
                     <div class="introEmoji">🎤</div>
                     <div class="introInfo">
                         <div class="introName">LUISITO</div>
-                        <div class="introDesc">Locutor! "¡ZARLANGAS MAÑANAS!" = Premios random</div>
+                        <div class="introDesc">Locutor! "¡ZARLANGAS MAÑANAS!" = Premios random + puntos</div>
                     </div>
                 </div>
             </div>
@@ -740,6 +798,33 @@
             <div class="highScore">HIGH SCORE: <span id="highScoreValue">0</span></div>
             <button class="retryBtn" onclick="retry()">REINTENTAR</button>
             <button class="retryBtn" onclick="location.reload()">CAMBIAR CHEF</button>
+        </div>
+
+        <div id="victoryScreen">
+            <div class="victoryTitle">🏆 ¡VICTORIA! 🏆</div>
+            <div class="victorySubtitle">¡DERROTASTE A RONALD!</div>
+            
+            <div class="victoryStats">
+                <div class="victoryStat">
+                    <span class="statLabel">PUNTAJE FINAL:</span>
+                    <span class="statValue" id="victoryScore">0</span>
+                </div>
+                <div class="victoryStat">
+                    <span class="statLabel">ENSALADAS:</span>
+                    <span class="statValue" id="victorySalads">0</span>
+                </div>
+                <div class="victoryStat">
+                    <span class="statLabel">COMBO MÁXIMO:</span>
+                    <span class="statValue" id="victoryCombo">0</span>
+                </div>
+                <div class="victoryStat">
+                    <span class="statLabel">CHEF:</span>
+                    <span class="statValue" id="victoryChef">-</span>
+                </div>
+            </div>
+            
+            <button class="victoryBtn" onclick="playNormalMode()">🎮 JUGAR DE NUEVO</button>
+            <button class="victoryBtn hard" onclick="playHardMode()">🔥 MODO DIFÍCIL</button>
         </div>
 
         <canvas id="gameCanvas"></canvas>
@@ -820,13 +905,12 @@
         let selectedChar = null;
 
         // ═══════════════════════════════════════════════════════════════════
-        // ✅ AUDIO MEJORADO
+        // AUDIO
         // ═══════════════════════════════════════════════════════════════════
         let audioEnabled = true;
         let audioContext = null;
         let bgmPlaying = false;
         let bossMusicPlaying = false;
-        let introMusicPlaying = false;
 
         function initAudio() {
             if (!audioContext) {
@@ -834,7 +918,7 @@
             }
         }
 
-        function playNote(freq, duration, type = 'square', volume = 0.2) {
+        function playNote(freq, duration, type = 'square', volume = 0.25) {
             if (!audioEnabled || !audioContext) return;
             
             const osc = audioContext.createOscillator();
@@ -851,34 +935,6 @@
             
             osc.start(audioContext.currentTime);
             osc.stop(audioContext.currentTime + duration);
-        }
-
-        // ✅ MÚSICA INTRO - Épica y misteriosa
-        function playIntroMusic() {
-            if (!audioEnabled || introMusicPlaying) return;
-            introMusicPlaying = true;
-            
-            const introMelody = [
-                {note: 261.63, duration: 0.4}, // C
-                {note: 293.66, duration: 0.4}, // D
-                {note: 329.63, duration: 0.4}, // E
-                {note: 392.00, duration: 0.6}, // G
-                {note: 329.63, duration: 0.4}, // E
-                {note: 392.00, duration: 0.8}, // G
-            ];
-            
-            let time = 0;
-            introMelody.forEach(({note, duration}) => {
-                setTimeout(() => {
-                    playNote(note, duration, 'sine', 0.15);
-                    playNote(note/2, duration, 'triangle', 0.1);
-                }, time * 1000);
-                time += duration;
-            });
-            
-            setTimeout(() => {
-                introMusicPlaying = false;
-            }, (time + 0.3) * 1000);
         }
 
         function playBGM() {
@@ -899,8 +955,8 @@
             let time = 0;
             melody.forEach(({note, duration}) => {
                 setTimeout(() => {
-                    playNote(note, duration, 'square', 0.12);
-                    playNote(note/2, duration, 'triangle', 0.06);
+                    playNote(note, duration, 'square', 0.15);
+                    playNote(note/2, duration, 'triangle', 0.08);
                 }, time * 1000);
                 time += duration;
             });
@@ -928,8 +984,8 @@
             let time = 0;
             bossMelody.forEach(({note, duration}) => {
                 setTimeout(() => {
-                    playNote(note, duration, 'sawtooth', 0.15);
-                    playNote(note/2, duration, 'square', 0.08);
+                    playNote(note, duration, 'sawtooth', 0.2);
+                    playNote(note/2, duration, 'square', 0.12);
                 }, time * 1000);
                 time += duration;
             });
@@ -942,68 +998,75 @@
 
         const sounds = {
             jump: () => { 
-                playNote(500, 0.08, 'sine', 0.25); 
-                setTimeout(() => playNote(650, 0.08, 'sine', 0.2), 40);
-                playNote(200, 0.06, 'sawtooth', 0.12);
+                playNote(500, 0.08, 'sine', 0.3); 
+                setTimeout(() => playNote(650, 0.08, 'sine', 0.25), 40);
+                playNote(200, 0.06, 'sawtooth', 0.15);
             },
             doubleJump: () => {
-                playNote(700, 0.08, 'sine', 0.25); 
-                setTimeout(() => playNote(900, 0.08, 'sine', 0.2), 40);
+                playNote(700, 0.08, 'sine', 0.3); 
+                setTimeout(() => playNote(900, 0.08, 'sine', 0.25), 40);
             },
             collect: () => { 
-                playNote(900, 0.1, 'square', 0.25); 
-                setTimeout(() => playNote(1200, 0.12, 'square', 0.25), 50);
-                setTimeout(() => playNote(1500, 0.08, 'sine', 0.18), 100);
+                playNote(900, 0.1, 'square', 0.3); 
+                setTimeout(() => playNote(1200, 0.12, 'square', 0.3), 50);
+                setTimeout(() => playNote(1500, 0.08, 'sine', 0.2), 100);
+            },
+            // ✅ NUEVO SONIDO PARA ENSALADAS
+            saladCollect: () => {
+                playNote(1100, 0.1, 'sine', 0.3);
+                setTimeout(() => playNote(1400, 0.12, 'sine', 0.3), 60);
+                setTimeout(() => playNote(1700, 0.08, 'sine', 0.25), 120);
             },
             hit: () => { 
-                playNote(120, 0.3, 'sawtooth', 0.3); 
-                playNote(100, 0.35, 'sawtooth', 0.25);
-                setTimeout(() => playNote(80, 0.2, 'sawtooth', 0.2), 100);
+                playNote(120, 0.3, 'sawtooth', 0.4); 
+                playNote(100, 0.35, 'sawtooth', 0.3);
+                setTimeout(() => playNote(80, 0.2, 'sawtooth', 0.25), 100);
             },
             powerup: () => {
                 const notes = [523.25, 659.25, 783.99, 1046.5];
                 notes.forEach((note, i) => {
-                    setTimeout(() => playNote(note, 0.12, 'sine', 0.2), i * 60);
+                    setTimeout(() => playNote(note, 0.12, 'sine', 0.25), i * 60);
                 });
             },
             powerReady: () => {
-                playNote(880, 0.08, 'sine', 0.18);
-                setTimeout(() => playNote(1100, 0.08, 'sine', 0.18), 50);
+                playNote(880, 0.08, 'sine', 0.2);
+                setTimeout(() => playNote(1100, 0.08, 'sine', 0.2), 50);
             },
             dash: () => {
                 for (let i = 0; i < 5; i++) {
-                    setTimeout(() => playNote(800 + i * 200, 0.04, 'square', 0.12), i * 30);
+                    setTimeout(() => playNote(800 + i * 200, 0.04, 'square', 0.15), i * 30);
                 }
             },
             groundPound: () => {
-                playNote(150, 0.2, 'sawtooth', 0.28);
-                setTimeout(() => playNote(100, 0.3, 'sawtooth', 0.28), 100);
+                playNote(150, 0.2, 'sawtooth', 0.35);
+                setTimeout(() => playNote(100, 0.3, 'sawtooth', 0.35), 100);
             },
             shield: () => {
-                playNote(600, 0.15, 'sine', 0.2);
-                setTimeout(() => playNote(800, 0.15, 'sine', 0.2), 100);
+                playNote(600, 0.15, 'sine', 0.25);
+                setTimeout(() => playNote(800, 0.15, 'sine', 0.25), 100);
             },
             bossHit: () => {
-                playNote(200, 0.15, 'sawtooth', 0.32);
-                setTimeout(() => playNote(150, 0.2, 'sawtooth', 0.28), 80);
+                playNote(200, 0.15, 'sawtooth', 0.4);
+                setTimeout(() => playNote(150, 0.2, 'sawtooth', 0.35), 80);
+            },
+            // ✅ NUEVO SONIDO CUANDO RONALD RECIBE DAÑO
+            ronaldHit: () => {
+                playNote(250, 0.2, 'sawtooth', 0.45);
+                setTimeout(() => playNote(180, 0.25, 'sawtooth', 0.4), 100);
             },
             bossDefeat: () => {
                 for (let i = 0; i < 8; i++) {
-                    setTimeout(() => playNote(1200 - i * 150, 0.1, 'square', 0.2), i * 100);
+                    setTimeout(() => playNote(1200 - i * 150, 0.1, 'square', 0.25), i * 100);
                 }
             },
             shop: () => {
-                playNote(600, 0.1, 'sine', 0.18);
-                setTimeout(() => playNote(800, 0.1, 'sine', 0.18), 80);
-                setTimeout(() => playNote(1000, 0.15, 'sine', 0.2), 160);
+                playNote(600, 0.1, 'sine', 0.2);
+                setTimeout(() => playNote(800, 0.1, 'sine', 0.2), 80);
+                setTimeout(() => playNote(1000, 0.15, 'sine', 0.25), 160);
             },
             mission: () => {
-                playNote(1000, 0.15, 'square', 0.2);
-                setTimeout(() => playNote(1200, 0.15, 'square', 0.2), 100);
-            },
-            charAlert: () => {
-                playNote(1500, 0.1, 'sine', 0.22);
-                setTimeout(() => playNote(1800, 0.1, 'sine', 0.22), 80);
+                playNote(1000, 0.15, 'square', 0.25);
+                setTimeout(() => playNote(1200, 0.15, 'square', 0.25), 100);
             }
         };
 
@@ -1027,6 +1090,7 @@
         let frame = 0;
         let gameSpeed = 0.7;
         let combo = 0;
+        let maxCombo = 0;
         let comboTimer = 0;
 
         let screenShake = 0;
@@ -1074,12 +1138,28 @@
         let nextShopScore = 1000;
         
         let lastSpecialSpawn = 0;
-        let specialSpawnCooldown = 900;
+        let specialSpawnCooldown = 600;
 
         let boss = null;
         let bossSpawned = false;
         let bossDefeated = false;
         let bossProjectiles = [];
+
+        // 🤡 BOSS FINAL RONALD - ✅ AJUSTADO
+        let finalBoss = null;
+        let finalBossActive = false;
+        let finalBossHealth = 15; // ✅ ANTES: 20, AHORA: 15
+        let finalBossMaxHealth = 15; // ✅ ANTES: 20, AHORA: 15
+        let saladCollected = 0;
+        let saladNeeded = 15; // ✅ ANTES: 20, AHORA: 15
+        let ronaldDistance = 800;
+        let gameWon = false;
+        let difficultyMultiplier = 1;
+        let gamesCompleted = 0;
+        let ronaldHelpers = [];
+        let cocinaPopActive = false;
+        let cocinaPopTimer = 0;
+        let ronaldDamageFlash = 0; // ✅ NUEVO: Para flash visual al dañar a Ronald
 
         // ✅ SISTEMA DE MISIONES
         let missions = [
@@ -1087,13 +1167,11 @@
             { id: 2, desc: 'Encontrá a Ivancito', progress: 0, target: 1, complete: false, type: 'ivancito' },
             { id: 3, desc: 'Activá a Luisito', progress: 0, target: 1, complete: false, type: 'luisito' },
             { id: 4, desc: 'Conseguí Chef Power', progress: 0, target: 1, complete: false, type: 'chef' },
-            { id: 5, desc: 'Llegá a 3000 puntos', progress: 0, target: 3000, complete: false, type: 'score' }
+            { id: 5, desc: 'Llegá a 3000 puntos', progress: 0, target: 3000, complete: false, type: 'score' },
+            { id: 6, desc: '🤡 BOSS FINAL: Derrotá a Ronald!', progress: 0, target: 15, complete: false, type: 'ronald' }
         ];
         let currentMission = 0;
         let allMissionsComplete = false;
-
-        // ✅ ALERTS
-        let charAlert = null;
 
         function showCharacterSelect() {
             document.getElementById('splashScreen').classList.add('hidden');
@@ -1116,15 +1194,26 @@
         function showIntro() {
             if (selectedCharIndex === -1) return;
             
-            initAudio();
-            playIntroMusic();
-            
             document.getElementById('characterScreen').classList.remove('show');
             document.getElementById('introScreen').classList.add('show');
         }
 
         function startGameWithChar() {
             if (selectedCharIndex === -1) return;
+            
+            initAudio();
+            
+            const savedDifficulty = localStorage.getItem('wonderPopDifficulty');
+            if (savedDifficulty) {
+                difficultyMultiplier = parseFloat(savedDifficulty);
+                localStorage.removeItem('wonderPopDifficulty');
+            }
+            
+            if (difficultyMultiplier > 1) {
+                gameSpeed *= difficultyMultiplier;
+                saladNeeded = Math.floor(15 * difficultyMultiplier);
+                finalBossMaxHealth = Math.floor(15 * difficultyMultiplier);
+            }
             
             document.getElementById('introScreen').classList.remove('show');
             document.getElementById('controls').style.display = 'flex';
@@ -1136,7 +1225,6 @@
                 player.canDoubleJump = true;
             }
             
-            introMusicPlaying = false;
             gameStarted = true;
             playBGM();
             initGame();
@@ -1350,10 +1438,10 @@
             if (specialChars.length > 0) return;
             if (frame - lastSpecialSpawn < specialSpawnCooldown) return;
             
-            if (Math.random() > 0.005) return;
+            if (Math.random() > 0.02) return;
             
             lastSpecialSpawn = frame;
-            specialSpawnCooldown = 900 + Math.random() * 600;
+            specialSpawnCooldown = 600 + Math.random() * 300;
             
             const types = ['chef', 'ivancito', 'luisito'];
             const weights = [0.3, 0.4, 0.3];
@@ -1363,9 +1451,6 @@
             if (rand < weights[0]) type = 'chef';
             else if (rand < weights[0] + weights[1]) type = 'ivancito';
             else type = 'luisito';
-            
-            // ✅ ALERT cuando aparece personaje
-            showCharAlert(type);
             
             if (type === 'chef') {
                 specialChars.push({
@@ -1399,23 +1484,6 @@
                     activated: false
                 });
             }
-        }
-
-        // ✅ MOSTRAR ALERTA DE PERSONAJE
-        function showCharAlert(type) {
-            const names = {
-                'chef': '¡EL CHEF APARECIÓ! →',
-                'ivancito': '¡IVANCITO ESTÁ AQUÍ! →',
-                'luisito': '¡LUISITO LLEGÓ! →'
-            };
-            
-            charAlert = {
-                text: names[type],
-                life: 90,
-                y: 250
-            };
-            
-            sounds.charAlert();
         }
 
         function spawnBoss() {
@@ -1452,7 +1520,7 @@
         }
 
         function update() {
-            if (gameOver || paused) return;
+            if (gameOver || paused || !selectedChar) return;
             
             frame++;
             
@@ -1470,6 +1538,9 @@
                 cameraOffsetX = 0;
                 cameraOffsetY = 0;
             }
+            
+            // ✅ Decrementa flash de daño a Ronald
+            if (ronaldDamageFlash > 0) ronaldDamageFlash--;
             
             if (selectedChar.powerCooldown > 0 && !player.powerActive) {
                 player.powerCharge++;
@@ -1564,12 +1635,6 @@
                 if (tutorialAlpha <= 0) showTutorial = false;
             }
             
-            // ✅ Update char alert
-            if (charAlert) {
-                charAlert.life--;
-                if (charAlert.life <= 0) charAlert = null;
-            }
-            
             buildings.forEach(b => {
                 b.x -= b.speed * gameSpeed;
                 if (b.x + b.width < 0) b.x = canvas.width + Math.random() * 200;
@@ -1590,6 +1655,8 @@
             
             if (boss) {
                 updateBoss();
+            } else if (finalBossActive) {
+                updateRonaldBoss();
             } else {
                 const obstacleInterval = frame < 300 ? 150 : 120;
                 if (frame % obstacleInterval === 0) spawnObstacle();
@@ -1746,6 +1813,7 @@
             }
         }
 
+        // ✅ CHECK MISSIONS - ARREGLADO
         function checkMissions() {
             missions.forEach(mission => {
                 if (mission.complete) return;
@@ -1756,14 +1824,31 @@
                         completeMission(mission);
                     }
                 }
+                
+                if (mission.type === 'ronald' && finalBossActive) {
+                    mission.progress = saladCollected;
+                    
+                    // ✅ BUG ARREGLADO: Check si Ronald murió
+                    if (finalBossHealth <= 0) {
+                        finalBossHealth = 0;
+                        if (!mission.complete) {
+                            mission.progress = saladNeeded;
+                            completeMission(mission);
+                        }
+                    }
+                }
             });
             
+            const completedMissions = missions.filter(m => m.complete && m.type !== 'ronald').length;
+            if (completedMissions >= 3 && !finalBossActive && !gameWon) {
+                activateRonaldBoss();
+            }
+            
             const allComplete = missions.every(m => m.complete);
-            if (allComplete && !allMissionsComplete) {
+            if (allComplete && !allMissionsComplete && !gameWon) {
                 allMissionsComplete = true;
-                sounds.mission();
-                createFloatingText(canvas.width/2 - 180, 300, '¡TODAS LAS MISIONES COMPLETAS!', colors.lime, 4000, 48);
-                createFloatingText(canvas.width/2 - 140, 350, '¡PREPÁRATE PARA EL BOSS!', colors.red, 4000, 42);
+                gameWon = true;
+                showVictoryScreen();
             }
         }
 
@@ -1771,22 +1856,28 @@
             mission.complete = true;
             currentMission = Math.min(currentMission + 1, missions.length - 1);
             sounds.mission();
-            
-            // ✅ Efecto visual cuando completás misión
-            screenShake = 20;
             createFloatingText(canvas.width/2 - 160, 250, '¡MISIÓN COMPLETA!', colors.yellow, 3500, 52);
+            screenShake = 15;
+            createExplosion(canvas.width/2, 280, colors.yellow, 30);
+        }
+
+        function activateRonaldBoss() {
+            finalBossActive = true;
+            finalBossHealth = finalBossMaxHealth;
+            saladCollected = 0;
+            ronaldDistance = 800;
             
-            for (let i = 0; i < 30; i++) {
-                particles.push({
-                    x: canvas.width/2,
-                    y: 280,
-                    vx: (Math.random() - 0.5) * 12,
-                    vy: (Math.random() - 0.5) * 12,
-                    size: 4 + Math.random() * 6,
-                    color: [colors.yellow, colors.lime, colors.cyan][Math.floor(Math.random() * 3)],
-                    life: 60
-                });
-            }
+            obstacles = [];
+            collectibles = [];
+            bossProjectiles = [];
+            
+            sounds.mission();
+            createFloatingText(canvas.width/2 - 200, 200, '🤡 ¡APARECIÓ RONALD!', colors.red, 4000, 56);
+            createFloatingText(canvas.width/2 - 180, 260, '¡AGARRÁ LAS ENSALADAS!', colors.lime, 3500, 42);
+            screenShake = 30;
+            
+            if (boss) boss.defeated = true;
+            boss = null;
         }
 
         function updateBoss() {
@@ -1920,6 +2011,179 @@
             }, 2500);
         }
 
+        // 🤡 UPDATE RONALD BOSS - ✅ MEJORADO
+        function updateRonaldBoss() {
+            if (cocinaPopActive) {
+                cocinaPopTimer--;
+                if (cocinaPopTimer <= 0) {
+                    cocinaPopActive = false;
+                }
+            }
+            
+            // ✅ MEJOR: Ronald se acerca basado en su SALUD, no en ensaladas
+            ronaldDistance = 800 - ((finalBossMaxHealth - finalBossHealth) / finalBossMaxHealth) * 700;
+            
+            if (frame % 80 === 0) {
+                collectibles.push({
+                    x: canvas.width + 50,
+                    y: 200 + Math.random() * 300,
+                    width: 45,
+                    height: 45,
+                    emoji: '🥗',
+                    points: 0,
+                    floatOffset: Math.random() * Math.PI * 2,
+                    isSalad: true
+                });
+            }
+            
+            if (frame % 400 === 0 && player.lives < player.maxLives) {
+                collectibles.push({
+                    x: canvas.width + 50,
+                    y: 250 + Math.random() * 250,
+                    width: 50,
+                    height: 50,
+                    emoji: '🍳',
+                    points: 0,
+                    floatOffset: Math.random() * Math.PI * 2,
+                    isCocinaPop: true
+                });
+            }
+            
+            if (frame % 90 === 0) {
+                const ronaldX = canvas.width - ronaldDistance;
+                const isGift = Math.random() > 0.5;
+                bossProjectiles.push({
+                    x: ronaldX,
+                    y: 200 + Math.random() * 300,
+                    width: 40,
+                    height: 40,
+                    emoji: isGift ? '🎁' : '🍟',
+                    floatOffset: 0,
+                    damage: 0.5,
+                    isRonaldProjectile: true, // ✅ Flag para identificar
+                    projectileType: isGift ? 'gift' : 'fries' // ✅ Para colorear
+                });
+            }
+            
+            if (frame % 500 === 0 && Math.random() > 0.5) {
+                const helperType = Math.random() > 0.5 ? 'ivancito' : 'luisito';
+                ronaldHelpers.push({
+                    type: helperType,
+                    x: canvas.width + 50,
+                    y: groundY,
+                    activated: false
+                });
+            }
+            
+            ronaldHelpers.forEach((helper, i) => {
+                helper.x -= gameSpeed * 3;
+                
+                const distance = Math.abs(helper.x - player.x);
+                if (!helper.activated && distance < 80) {
+                    helper.activated = true;
+                    
+                    if (helper.type === 'ivancito') {
+                        sounds.powerup();
+                        createFloatingText(helper.x, helper.y - 60, '¡DIVINA!', colors.pink, 3000, 48);
+                        screenShake = 10;
+                        
+                        // ✅ MEJORADO: Radio mayor de destrucción
+                        bossProjectiles = bossProjectiles.filter(proj => {
+                            const dist = Math.abs(proj.x - helper.x);
+                            if (dist < 200) { // Antes 150
+                                createExplosion(proj.x, proj.y, colors.pink, 15);
+                                return false;
+                            }
+                            return true;
+                        });
+                        
+                    } else if (helper.type === 'luisito') {
+                        sounds.powerup();
+                        createFloatingText(helper.x, helper.y - 60, 'ZARLANGAS MAÑANAS!', colors.orange, 3000, 42);
+                        screenShake = 12;
+                        
+                        // ✅ DAÑO A RONALD
+                        finalBossHealth -= 3;
+                        saladCollected += 3;
+                        ronaldDamageFlash = 30; // ✅ Flash visual
+                        sounds.ronaldHit(); // ✅ Sonido
+                        createFloatingText(canvas.width - 150, 100, '-3 HP RONALD!', colors.red, 3000);
+                    }
+                }
+                
+                if (helper.x < -100) ronaldHelpers.splice(i, 1);
+            });
+            
+            bossProjectiles.forEach((proj, i) => {
+                proj.x -= 4 * difficultyMultiplier;
+                proj.floatOffset += 0.15;
+                
+                if (!player.invincible && !player.shieldActive && !cocinaPopActive &&
+                    player.x < proj.x + proj.width &&
+                    player.x + player.width > proj.x &&
+                    player.y < proj.y + proj.height &&
+                    player.y + player.height > proj.y) {
+                    
+                    if (Math.random() > 0.5) {
+                        player.lives -= proj.damage;
+                        if (player.lives <= 0) {
+                            player.lives = 0;
+                            endGame();
+                        }
+                    }
+                    
+                    player.invincible = 90;
+                    sounds.hit();
+                    createExplosion(proj.x, proj.y, colors.red, 15);
+                    bossProjectiles.splice(i, 1);
+                }
+                
+                if (proj.x < -50) bossProjectiles.splice(i, 1);
+            });
+            
+            collectibles.forEach((col, i) => {
+                col.x -= gameSpeed * 3.5;
+                col.floatOffset += 0.1;
+                
+                if (player.x < col.x + col.width &&
+                    player.x + player.width > col.x &&
+                    player.y < col.y + col.height &&
+                    player.y + player.height > col.y) {
+                    
+                    if (col.isSalad) {
+                        saladCollected++;
+                        finalBossHealth--;
+                        ronaldDamageFlash = 30; // ✅ Flash visual
+                        
+                        sounds.saladCollect(); // ✅ Sonido especial
+                        score += 100 * difficultyMultiplier;
+                        createExplosion(col.x, col.y, colors.lime, 20);
+                        createFloatingText(col.x, col.y - 30, '+100 🥗', colors.lime, 2500);
+                        
+                        if (saladCollected % 5 === 0) {
+                            createFloatingText(canvas.width - 150, 150, '¡NOOO!', colors.red, 2000, 52);
+                            screenShake = 15;
+                        }
+                        
+                    } else if (col.isCocinaPop) {
+                        player.lives = Math.min(player.lives + 1, player.maxLives);
+                        cocinaPopActive = true;
+                        cocinaPopTimer = 180;
+                        player.invincible = 180;
+                        
+                        sounds.powerup();
+                        createExplosion(col.x, col.y, colors.yellow, 25);
+                        createFloatingText(col.x, col.y - 40, '¡COCINA POP! +1❤️', colors.yellow, 3000, 42);
+                        screenShake = 12;
+                    }
+                    
+                    collectibles.splice(i, 1);
+                }
+                
+                if (col.x < -col.width) collectibles.splice(i, 1);
+            });
+        }
+
         function activateShield() {
             player.powerActive = true;
             player.shieldActive = true;
@@ -1964,6 +2228,7 @@
 
         function collectItem(col, index) {
             combo++;
+            if (combo > maxCombo) maxCombo = combo;
             comboTimer = 180;
             
             let points = col.points;
@@ -2070,6 +2335,49 @@
             document.getElementById('finalScoreValue').textContent = score;
             document.getElementById('highScoreValue').textContent = highScore;
             document.getElementById('gameOverScreen').classList.add('show');
+        }
+
+        function showVictoryScreen() {
+            gameOver = true;
+            gameStarted = false;
+            paused = true;
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height * 0.6;
+                    const color = [colors.yellow, colors.pink, colors.cyan, colors.lime, colors.orange][Math.floor(Math.random() * 5)];
+                    createExplosion(x, y, color, 20);
+                }, i * 50);
+            }
+            
+            document.getElementById('victoryScore').textContent = score;
+            document.getElementById('victorySalads').textContent = saladCollected;
+            document.getElementById('victoryCombo').textContent = maxCombo;
+            document.getElementById('victoryChef').textContent = selectedChar.name;
+            
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('wonderPopHighScore', highScore);
+            }
+            
+            setTimeout(() => {
+                document.getElementById('victoryScreen').classList.add('show');
+                sounds.bossDefeat();
+            }, 2000);
+            
+            gamesCompleted++;
+        }
+
+        function playNormalMode() {
+            difficultyMultiplier = 1;
+            location.reload();
+        }
+
+        function playHardMode() {
+            difficultyMultiplier = 1.5;
+            localStorage.setItem('wonderPopDifficulty', '1.5');
+            location.reload();
         }
 
         function createExplosion(x, y, color, count = 12) {
@@ -2433,7 +2741,122 @@
             ctx.textAlign = 'left';
         }
 
+        // 🤡 DIBUJAR RONALD BOSS - ✅ MEJORADO CON FLASH
+        function drawRonaldBoss() {
+            if (!finalBossActive) return;
+            
+            const ronaldX = canvas.width - ronaldDistance;
+            const ronaldY = groundY - 60;
+            
+            ctx.save();
+            
+            // ✅ FLASH ROJO CUANDO RECIBE DAÑO
+            if (ronaldDamageFlash > 0) {
+                ctx.fillStyle = `rgba(255, 0, 0, ${ronaldDamageFlash / 30})`;
+                ctx.fillRect(ronaldX - 40, ronaldY - 40, 150, 150);
+            }
+            
+            const pulse = Math.sin(frame * 0.2) * 0.4 + 0.6;
+            ctx.fillStyle = `rgba(255, 0, 0, ${pulse * 0.3})`;
+            ctx.fillRect(ronaldX - 30, ronaldY - 30, 120, 120);
+            
+            ctx.fillStyle = colors.red;
+            ctx.fillRect(ronaldX + 10, ronaldY + 30, 50, 40);
+            
+            ctx.fillStyle = colors.yellow;
+            ctx.fillRect(ronaldX + 15, ronaldY + 35, 40, 5);
+            ctx.fillRect(ronaldX + 15, ronaldY + 45, 40, 5);
+            ctx.fillRect(ronaldX + 15, ronaldY + 55, 40, 5);
+            
+            ctx.fillStyle = '#FFE4B5';
+            ctx.fillRect(ronaldX + 15, ronaldY, 40, 30);
+            
+            ctx.fillStyle = colors.red;
+            ctx.fillRect(ronaldX + 10, ronaldY - 5, 15, 10);
+            ctx.fillRect(ronaldX + 45, ronaldY - 5, 15, 10);
+            
+            ctx.fillStyle = colors.white;
+            ctx.fillRect(ronaldX + 20, ronaldY + 8, 10, 10);
+            ctx.fillRect(ronaldX + 40, ronaldY + 8, 10, 10);
+            
+            ctx.fillStyle = colors.black;
+            ctx.fillRect(ronaldX + 23, ronaldY + 11, 4, 4);
+            ctx.fillRect(ronaldX + 43, ronaldY + 11, 4, 4);
+            
+            ctx.fillStyle = colors.red;
+            ctx.fillRect(ronaldX + 20, ronaldY + 22, 30, 3);
+            
+            ctx.fillStyle = colors.red;
+            ctx.beginPath();
+            ctx.arc(ronaldX + 35, ronaldY + 18, 4, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.strokeStyle = colors.black;
+            ctx.lineWidth = 3;
+            ctx.strokeRect(ronaldX + 15, ronaldY, 40, 30);
+            ctx.strokeRect(ronaldX + 10, ronaldY + 30, 50, 40);
+            
+            ctx.restore();
+            
+            // ✅ BARRA MEJORADA - Muestra HP directo
+            const barWidth = 250;
+            const barHeight = 25;
+            const barX = canvas.width/2 - barWidth/2;
+            const barY = 40;
+            
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.9)';
+            ctx.fillRect(barX - 5, barY - 5, barWidth + 10, barHeight + 10);
+            
+            ctx.fillStyle = colors.red;
+            ctx.fillRect(barX, barY, barWidth, barHeight);
+            
+            const healthPercent = Math.max(0, finalBossHealth / finalBossMaxHealth);
+            ctx.fillStyle = healthPercent > 0.5 ? colors.orange : colors.red;
+            if (healthPercent > 0.7) ctx.fillStyle = colors.yellow;
+            ctx.fillRect(barX, barY, barWidth * healthPercent, barHeight);
+            
+            ctx.strokeStyle = colors.black;
+            ctx.lineWidth = 4;
+            ctx.strokeRect(barX, barY, barWidth, barHeight);
+            
+            ctx.font = 'bold 16px Courier';
+            ctx.fillStyle = colors.white;
+            ctx.textAlign = 'center';
+            // ✅ MUESTRA HP DIRECTAMENTE
+            ctx.fillText(`🤡 RONALD HP: ${Math.max(0, finalBossHealth)}/${finalBossMaxHealth}`, canvas.width/2, barY + 17);
+            ctx.textAlign = 'left';
+            
+            if (ronaldDistance < 300) {
+                ctx.font = 'bold 28px Courier';
+                ctx.fillStyle = colors.red;
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 5;
+                const warningText = '¡RONALD SE ACERCA!';
+                ctx.strokeText(warningText, canvas.width/2 - 140, canvas.height - 100);
+                ctx.fillText(warningText, canvas.width/2 - 140, canvas.height - 100);
+            }
+            
+            ronaldHelpers.forEach(helper => {
+                const floatY = helper.y + Math.sin(frame * 0.1) * 5;
+                
+                ctx.font = '40px Arial';
+                if (helper.type === 'ivancito') {
+                    ctx.fillText('📸', helper.x, floatY);
+                    ctx.font = 'bold 12px Courier';
+                    ctx.fillStyle = colors.pink;
+                    ctx.fillText('IVANCITO', helper.x - 8, floatY - 35);
+                } else {
+                    ctx.fillText('🎤', helper.x, floatY);
+                    ctx.font = 'bold 12px Courier';
+                    ctx.fillStyle = colors.cyan;
+                    ctx.fillText('LUISITO', helper.x - 5, floatY - 35);
+                }
+            });
+        }
+
         function draw() {
+            if (!selectedChar) return;
+            
             ctx.save();
             ctx.translate(cameraOffsetX, cameraOffsetY);
             
@@ -2567,17 +2990,41 @@
             
             specialChars.forEach(sc => drawSpecialChar(sc));
             
+            // ✅ PROYECTILES MEJORADOS - Con colores según tipo
             bossProjectiles.forEach(proj => {
                 const floatY = proj.y + Math.sin(proj.floatOffset) * 6;
                 
-                ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
-                ctx.fillRect(proj.x - 8, floatY - 8, proj.width + 16, proj.height + 16);
+                // ✅ FONDO DE COLOR según tipo
+                if (proj.isRonaldProjectile) {
+                    if (proj.projectileType === 'gift') {
+                        // 🎁 AMARILLO DORADO
+                        ctx.fillStyle = 'rgba(255, 215, 0, 0.7)';
+                    } else {
+                        // 🍟 NARANJA
+                        ctx.fillStyle = 'rgba(255, 140, 0, 0.7)';
+                    }
+                    ctx.fillRect(proj.x - 8, floatY - 8, proj.width + 16, proj.height + 16);
+                    
+                    // Fondo sólido adicional
+                    ctx.fillStyle = proj.projectileType === 'gift' ? colors.yellow : colors.orange;
+                    ctx.fillRect(proj.x, floatY, proj.width, proj.height);
+                    
+                    // Borde negro grueso
+                    ctx.strokeStyle = colors.black;
+                    ctx.lineWidth = 4;
+                    ctx.strokeRect(proj.x, floatY, proj.width, proj.height);
+                } else {
+                    // Proyectiles del boss normal
+                    ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+                    ctx.fillRect(proj.x - 8, floatY - 8, proj.width + 16, proj.height + 16);
+                }
                 
                 ctx.font = '40px Arial';
                 ctx.fillText(proj.emoji, proj.x, floatY + 30);
             });
             
             drawBoss();
+            drawRonaldBoss();
             
             particles.forEach(p => {
                 if (p.emoji) {
@@ -2614,78 +3061,106 @@
             
             ctx.restore();
             
-            // ✅ CHAR ALERT
-            if (charAlert) {
-                const alpha = Math.min(1, charAlert.life / 30);
-                ctx.globalAlpha = alpha;
-                
-                ctx.fillStyle = 'rgba(255, 215, 0, 0.95)';
-                const padding = 20;
-                const textWidth = ctx.measureText(charAlert.text).width + padding * 2;
-                const alertX = canvas.width - textWidth - 20;
-                const alertY = charAlert.y;
-                
-                ctx.fillRect(alertX, alertY, textWidth, 50);
-                
-                ctx.strokeStyle = colors.black;
-                ctx.lineWidth = 4;
-                ctx.strokeRect(alertX, alertY, textWidth, 50);
-                
-                ctx.font = 'bold 20px Courier';
-                ctx.fillStyle = colors.black;
-                ctx.fillText(charAlert.text, alertX + padding, alertY + 32);
-                
-                ctx.globalAlpha = 1;
-            }
-            
             drawHUD();
             
-            // ✅ TUTORIAL MÁS COMPACTO
+            // ✅ MISSION HUD - MÁS COMPACTO
+            if (!boss && !finalBossActive) {
+                const currentM = missions[currentMission];
+                if (currentM && !currentM.complete) {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+                    ctx.fillRect(15, 115, canvas.width - 30, 50); // ✅ ANTES: 60, AHORA: 50
+                    
+                    ctx.strokeStyle = colors.cyan;
+                    ctx.lineWidth = 4;
+                    ctx.strokeRect(15, 115, canvas.width - 30, 50);
+                    
+                    ctx.font = 'bold 12px Courier'; // ✅ ANTES: 14px
+                    ctx.fillStyle = colors.cyan;
+                    ctx.fillText('MISIÓN ACTUAL:', 25, 133);
+                    
+                    ctx.font = 'bold 16px Courier'; // ✅ ANTES: 20px
+                    ctx.fillStyle = colors.white;
+                    ctx.fillText(currentM.desc, 25, 153);
+                    
+                    if (currentM.type !== 'ivancito' && currentM.type !== 'luisito' && currentM.type !== 'chef') {
+                        const barWidth = canvas.width - 70;
+                        const barX = 25;
+                        const barY = 140;
+                        const progress = Math.min(1, currentM.progress / currentM.target);
+                        
+                        ctx.fillStyle = colors.yellow;
+                        ctx.fillRect(barX + 200, barY, barWidth - 200, 8);
+                        
+                        ctx.strokeStyle = colors.black;
+                        ctx.lineWidth = 2;
+                        ctx.strokeRect(barX + 200, barY, barWidth - 200, 8);
+                        
+                        ctx.fillStyle = colors.lime;
+                        ctx.fillRect(barX + 200, barY, (barWidth - 200) * progress, 8);
+                        
+                        ctx.font = 'bold 12px Courier';
+                        ctx.fillStyle = colors.yellow;
+                        ctx.fillText(`${currentM.progress}/${currentM.target}`, barX + barWidth - 40, barY + 7);
+                    }
+                }
+            }
+            
             if (showTutorial) {
                 ctx.globalAlpha = tutorialAlpha;
                 
-                ctx.fillStyle = colors.yellow;
-                ctx.font = 'bold 32px Courier';
+                ctx.fillStyle = colors.lime;
+                ctx.font = 'bold 28px Courier';
                 ctx.strokeStyle = colors.black;
-                ctx.lineWidth = 4;
-                ctx.textAlign = 'center';
-                ctx.strokeText('TAP = SALTAR!', canvas.width/2, canvas.height/2);
-                ctx.fillText('TAP = SALTAR!', canvas.width/2, canvas.height/2);
-                ctx.textAlign = 'left';
+                ctx.lineWidth = 5;
+                ctx.strokeText('AGARRÁ ESTO! ↑', canvas.width/2 - 120, 200);
+                ctx.fillText('AGARRÁ ESTO! ↑', canvas.width/2 - 120, 200);
+                
+                ctx.fillStyle = colors.red;
+                ctx.strokeText('EVITÁ ESTO! ↓', canvas.width/2 - 110, groundY + 80);
+                ctx.fillText('EVITÁ ESTO! ↓', canvas.width/2 - 110, groundY + 80);
+                
+                ctx.fillStyle = colors.yellow;
+                ctx.font = 'bold 36px Courier';
+                ctx.strokeText('TAP PARA SALTAR!', canvas.width/2 - 150, canvas.height/2 - 50);
+                ctx.fillText('TAP PARA SALTAR!', canvas.width/2 - 150, canvas.height/2 - 50);
                 
                 ctx.globalAlpha = 1;
             }
         }
 
         function drawHUD() {
-            // ✅ HUD COMPACTO PARA MÓVIL
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-            ctx.fillRect(15, 15, 170, 70);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.85)';
+            ctx.fillRect(15, 15, 200, 90);
             
             ctx.strokeStyle = colors.yellow;
-            ctx.lineWidth = 3;
-            ctx.strokeRect(15, 15, 170, 70);
+            ctx.lineWidth = 4;
+            ctx.strokeRect(15, 15, 200, 90);
             
-            ctx.font = 'bold 14px Courier';
+            ctx.font = 'bold 18px Courier';
             ctx.fillStyle = colors.yellow;
-            ctx.fillText('SCORE', 25, 35);
+            ctx.fillText('SCORE', 30, 42);
             
-            ctx.font = 'bold 32px Courier';
+            ctx.font = 'bold 42px Courier';
             ctx.fillStyle = colors.cyan;
-            ctx.fillText(score, 25, 68);
+            ctx.fillText(score, 30, 85);
             
-            ctx.font = '28px Arial';
+            const completedCount = missions.filter(m => m.complete && m.type !== 'ronald').length;
+            ctx.font = 'bold 14px Courier';
+            ctx.fillStyle = completedCount >= 3 ? colors.lime : colors.orange;
+            ctx.fillText(`MISIONES: ${completedCount}/3`, 30, 103);
+            
+            ctx.font = '32px Arial';
             for (let i = 0; i < player.maxLives; i++) {
-                ctx.fillText(i < player.lives ? '❤️' : '🖤', 200 + i * 38, 45);
+                ctx.fillText(i < player.lives ? '❤️' : '🖤', 230 + i * 42, 50);
             }
             
-            if (selectedChar.powerCooldown > 0) {
-                const barWidth = 130;
-                const barHeight = 10;
-                const barX = 200;
-                const barY = 65;
+            if (selectedChar && selectedChar.powerCooldown > 0) {
+                const barWidth = 150;
+                const barHeight = 12;
+                const barX = 230;
+                const barY = 75;
                 
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
                 ctx.fillRect(barX, barY, barWidth, barHeight);
                 
                 const powerPercent = Math.min(1, player.powerCharge / selectedChar.powerCooldown);
@@ -2702,80 +3177,67 @@
                 ctx.strokeStyle = colors.black;
                 ctx.lineWidth = 2;
                 ctx.strokeRect(barX, barY, barWidth, barHeight);
+                
+                ctx.font = 'bold 10px Courier';
+                ctx.fillStyle = colors.white;
+                let powerName = selectedChar.powerType === 'shield' ? 'SHIELD' : 'DASH';
+                ctx.fillText(powerName, barX + 5, barY + 10);
             }
             
             if (combo > 1) {
                 ctx.fillStyle = 'rgba(255, 215, 0, 0.9)';
-                ctx.fillRect(canvas.width - 110, 15, 95, 40);
+                ctx.fillRect(canvas.width - 140, 15, 125, 50);
                 ctx.strokeStyle = colors.pink;
-                ctx.lineWidth = 3;
-                ctx.strokeRect(canvas.width - 110, 15, 95, 40);
+                ctx.lineWidth = 4;
+                ctx.strokeRect(canvas.width - 140, 15, 125, 50);
                 
-                ctx.font = 'bold 13px Courier';
+                ctx.font = 'bold 16px Courier';
                 ctx.fillStyle = colors.black;
-                ctx.fillText('COMBO', canvas.width - 100, 32);
-                ctx.font = 'bold 22px Courier';
+                ctx.fillText('COMBO', canvas.width - 128, 35);
+                ctx.font = 'bold 26px Courier';
                 ctx.fillStyle = colors.pink;
-                ctx.fillText('x' + combo, canvas.width - 70, 50);
+                ctx.fillText('x' + combo, canvas.width - 88, 56);
             }
             
             if (player.chefMode > 0) {
-                ctx.fillStyle = 'rgba(255, 215, 0, 0.9)';
-                ctx.fillRect(15, canvas.height - 60, canvas.width - 30, 45);
+                ctx.fillStyle = 'rgba(255, 215, 0, 0.95)';
+                ctx.fillRect(15, canvas.height - 70, canvas.width - 30, 55);
                 ctx.strokeStyle = colors.orange;
-                ctx.lineWidth = 4;
-                ctx.strokeRect(15, canvas.height - 60, canvas.width - 30, 45);
+                ctx.lineWidth = 5;
+                ctx.strokeRect(15, canvas.height - 70, canvas.width - 30, 55);
                 
-                ctx.font = 'bold 26px Courier';
+                ctx.font = 'bold 32px Courier';
                 ctx.fillStyle = colors.orange;
                 ctx.strokeStyle = colors.black;
                 ctx.lineWidth = 4;
-                ctx.textAlign = 'center';
-                ctx.strokeText('✨ CHEF MODE! ✨', canvas.width/2, canvas.height - 28);
-                ctx.fillText('✨ CHEF MODE! ✨', canvas.width/2, canvas.height - 28);
-                ctx.textAlign = 'left';
+                ctx.strokeText('✨ CHEF MODE! ✨', canvas.width/2 - 140, canvas.height - 35);
+                ctx.fillText('✨ CHEF MODE! ✨', canvas.width/2 - 140, canvas.height - 35);
             }
             
-            if (!boss) {
-                const currentM = missions[currentMission];
-                if (currentM && !currentM.complete) {
-                    ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-                    ctx.fillRect(15, 95, canvas.width - 30, 50);
-                    
-                    ctx.strokeStyle = colors.cyan;
-                    ctx.lineWidth = 3;
-                    ctx.strokeRect(15, 95, canvas.width - 30, 50);
-                    
-                    ctx.font = 'bold 11px Courier';
-                    ctx.fillStyle = colors.cyan;
-                    ctx.fillText('MISIÓN:', 25, 112);
-                    
-                    ctx.font = 'bold 16px Courier';
-                    ctx.fillStyle = colors.white;
-                    ctx.fillText(currentM.desc, 25, 133);
-                    
-                    if (currentM.type !== 'ivancito' && currentM.type !== 'luisito' && currentM.type !== 'chef') {
-                        const barWidth = canvas.width - 90;
-                        const barX = 25;
-                        const barY = 115;
-                        const progress = Math.min(1, currentM.progress / currentM.target);
-                        
-                        ctx.fillStyle = colors.yellow;
-                        ctx.fillRect(barX + 135, barY, barWidth - 135, 6);
-                        
-                        ctx.strokeStyle = colors.black;
-                        ctx.lineWidth = 2;
-                        ctx.strokeRect(barX + 135, barY, barWidth - 135, 6);
-                        
-                        ctx.fillStyle = colors.lime;
-                        ctx.fillRect(barX + 135, barY, (barWidth - 135) * progress, 6);
-                        
-                        ctx.font = 'bold 10px Courier';
-                        ctx.fillStyle = colors.yellow;
-                        ctx.fillText(`${currentM.progress}/${currentM.target}`, barX + barWidth - 35, barY + 5);
-                    }
-                }
+            if (cocinaPopActive) {
+                ctx.fillStyle = 'rgba(255, 215, 0, 0.95)';
+                ctx.fillRect(15, canvas.height - 70, canvas.width - 30, 55);
+                ctx.strokeStyle = colors.lime;
+                ctx.lineWidth = 5;
+                ctx.strokeRect(15, canvas.height - 70, canvas.width - 30, 55);
+                
+                ctx.font = 'bold 32px Courier';
+                ctx.fillStyle = colors.lime;
+                ctx.strokeStyle = colors.black;
+                ctx.lineWidth = 4;
+                ctx.strokeText('🍳 COCINA POP! 🍳', canvas.width/2 - 150, canvas.height - 35);
+                ctx.fillText('🍳 COCINA POP! 🍳', canvas.width/2 - 150, canvas.height - 35);
             }
+            
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            ctx.fillRect(15, canvas.height - 140, 160, 40);
+            ctx.strokeStyle = selectedChar ? selectedChar.color : colors.yellow;
+            ctx.lineWidth = 3;
+            ctx.strokeRect(15, canvas.height - 140, 160, 40);
+            
+            ctx.font = 'bold 18px Courier';
+            ctx.fillStyle = selectedChar ? selectedChar.color : colors.yellow;
+            ctx.fillText(`CHEF ${selectedChar ? selectedChar.name : 'PLAYER'}`, 25, canvas.height - 113);
         }
 
         function gameLoop() {
